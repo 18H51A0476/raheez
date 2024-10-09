@@ -6,19 +6,19 @@ const Hero = () => {
 
   return (
     <section className={`h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
-      <div className="text-center mb-6">
-        <h1 className="text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
+      <div className="text-center mb-6 px-4">
+        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
           Hi, I'm Mohammed Raheez
         </h1>
-        <p className="text-2xl mt-4 font-light tracking-wide animate-fade-in">
+        <p className="text-lg md:text-2xl mt-4 font-light tracking-wide animate-fade-in">
           Software Developer and Instructor | PROBLEM SOLVING ENTHUSIAST
         </p>
-        <p className="text-xl mt-2 italic animate-fade-in">
+        <p className="text-base md:text-xl mt-2 italic animate-fade-in">
           Lifelong Student | Versatile MERN & Java Full Stack Developer | Tech Enthusiast
         </p>
       </div>
 
-      <div className="flex justify-center space-x-8 mt-6">
+      <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8 mt-6">
         {/* Expertise */}
         <div className="flex flex-col items-center text-center transition duration-300 transform hover:scale-110">
           <FaCode className="text-4xl mb-2 text-yellow-500 filter drop-shadow-glow animate-spin-slow" />
