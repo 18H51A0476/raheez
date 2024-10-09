@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className={`min-h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
       <div className="text-center mb-6 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4 mt-20">
+        <h1 className="text-4xl md:text-8xl font-bold  bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4 mt-20 animate-pulse">
           Hi, I'm Mohammed Raheez
         </h1>
         <p className="text-lg md:text-2xl mt-4 font-light tracking-wide animate-fade-in">
@@ -70,12 +70,12 @@ const Hero = () => {
         <a
           href="/RaheezResume.pdf"
           download
-          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg ${
+          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg  animate-pulse ${
             theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
           }`}
         >
           {/* Glowing animation */}
-          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-400 to-blue-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
+          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-400 to-blue-600 opacity-75 rounded-lg filter blur-md "></span>
           <span className="relative z-10">Download My Resume</span>
         </a>
       </div>

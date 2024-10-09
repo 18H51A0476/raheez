@@ -29,7 +29,7 @@ const Header = () => {
       }`}
     >
       <nav className="container mx-auto flex justify-between items-center py-4">
-        <h1 className="text-4xl font-cursive tracking-wide transform transition-transform duration-500 hover:scale-105 relative">
+        <h1 className="md:text-4xl text-3xl font-cursive tracking-wide transform transition-transform duration-500 hover:scale-105 relative">
           Mohammed Raheez
           <span className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-600 opacity-30 blur-md animate-pulse"></span>
         </h1>
