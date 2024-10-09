@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className={`h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
       <div className="text-center mb-6 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
+        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4  mt-64">
           Hi, I'm Mohammed Raheez
         </h1>
         <p className="text-lg md:text-2xl mt-4 font-light tracking-wide animate-fade-in">
