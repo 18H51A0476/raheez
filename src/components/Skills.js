@@ -35,27 +35,29 @@ const Skills = () => {
         theme === "light"
           ? "bg-gray-100 text-gray-900"
           : "bg-gray-900 text-white"
-      }`}
+      } relative overflow-hidden`} // Ensure no overlapping issues
     >
       <div className="container mx-auto text-center px-4">
         <h2
-          className={`text-6xl font-extrabold mb-8 ${
+          className={`text-6xl font-extrabold mb-12 relative z-10 ${
             theme === "light" ? "text-gray-800" : "text-gray-200"
           }`}
         >
           My Skills
+          <span className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-600 opacity-30 blur-md animate-pulse z-0"></span>
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 z-10">
           {skills.map((skill, index) => (
             <span
               key={index}
-              className={`bg-opacity-90 rounded-lg py-4 px-6 shadow-lg transition-transform transform hover:scale-105 ${
+              className={`relative bg-opacity-90 rounded-lg py-6 px-8 shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl overflow-hidden ${
                 theme === "light"
                   ? "bg-white text-gray-900 hover:bg-gray-200"
                   : "bg-gray-800 text-white hover:bg-gray-700"
               }`}
             >
               <span className="font-semibold">{skill}</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-600 opacity-20 blur-md animate-pulse"></span>
             </span>
           ))}
         </div>
