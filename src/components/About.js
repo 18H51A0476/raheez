@@ -100,29 +100,22 @@ const About = () => {
           excited to explore new horizons and nurture the next generation of
           developers.
         </p>
-        {/* Shining Effect Container */}
-        // Add this to the relevant component, such as Footer.js or another
-        section
+      
         <div className="relative mt-8">
-          <a
-            href="https://linkedin.com/in/raheez"
-            className={`relative inline-block text-center transition-transform transform hover:scale-105 ${
-              theme === "light"
-                ? "bg-gray-200 text-gray-900"
-                : "bg-gray-800 text-white"
-            }`}
-          >
-            <div
-              className={`shining-effect ${
-                theme === "light" ? "bg-gray-200" : "bg-gray-800"
-              } rounded-lg py-4 px-6 shadow-lg`}
-            >
-              <span className="shining-text font-cursive text-2xl">
-                🌟 Let's Connect! 🌟
-              </span>
-            </div>
-          </a>
-        </div>
+  <a
+    href="https://linkedin.com/in/raheez"
+    className={`relative inline-block text-center transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg ${
+      theme === "light" ? "bg-black" : "bg-white text-gray-900"
+    }`}
+  >
+    {/* Glowing animation */}
+    <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-400 to-blue-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
+    <div className="rounded-lg py-4 px-6 relative z-10">
+      <span className="font-cursive text-2xl">🌟 Let's Connect! 🌟</span>
+    </div>
+  </a>
+</div>
+
       </div>
       <style jsx>{`
         .shining-effect {
