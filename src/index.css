@@ -1,13 +1,52 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+/* src/index.css */
+/* src/index.css */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Arial', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Cursive font for the header */
+h1 {
+  font-family: 'Pacifico', cursive; /* Apply cursive font */
+}
+
+/* Light Mode Styles */
+.light {
+  background-color: #e0f7fa; /* Light blue background */
+  color: #212529; /* Dark text */
+}
+
+/* Dark Mode Styles */
+.dark {
+  background-color: #1a202c; /* Navy background */
+  color: #f7fafc; /* Light text */
+}
+
+/* Additional Styles for Header Links */
+a {
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove underline */
+  padding: 5px; /* Add some padding for better click area */
+}
+
+/* Header Gradient */
+header {
+  background: linear-gradient(to right, #90caf9, #ffffff); /* Light mode gradient */
+}
+
+/* Shadow Effect */
+header {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for both modes */
+}
+
+/* Hover Effect for Links */
+a:hover {
+  color: #0d47a1; /* Darker blue on hover for light mode */
 }
