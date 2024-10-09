@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/18H51A0476/raheez.git/static/css/main.d8cfc43f.css",
+    "main.js": "/18H51A0476/raheez.git/static/js/main.c85fc6cd.js",
+    "index.html": "/18H51A0476/raheez.git/index.html",
+    "main.d8cfc43f.css.map": "/18H51A0476/raheez.git/static/css/main.d8cfc43f.css.map",
+    "main.c85fc6cd.js.map": "/18H51A0476/raheez.git/static/js/main.c85fc6cd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8cfc43f.css",
+    "static/js/main.c85fc6cd.js"
+  ]
+}
