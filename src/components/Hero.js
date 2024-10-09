@@ -5,9 +5,9 @@ const Hero = () => {
   const { theme } = useTheme();
 
   return (
-    <section className={`h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
+    <section className={`min-h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
       <div className="text-center mb-6 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4  mt-64">
+        <h1 className="text-4xl md:text-6xl font-bold animate-bounce bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4 mt-20">
           Hi, I'm Mohammed Raheez
         </h1>
         <p className="text-lg md:text-2xl mt-4 font-light tracking-wide animate-fade-in">
@@ -52,17 +52,33 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Stylish and Animated Hire Me Button */}
-      <a
-        href="#contact"
-        className={`relative mt-8 inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg ${
-          theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
-        }`}
-      >
-        {/* Glowing animation */}
-        <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-indigo-400 to-purple-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
-        <span className="relative z-10">Hire Me</span>
-      </a>
+      {/* Button Container for Hire Me and Download Resume */}
+      <div className="flex flex-col items-center mt-8 space-y-4">
+        {/* Stylish and Animated Hire Me Button */}
+        <a
+          href="#contact"
+          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg ${
+            theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
+          }`}
+        >
+          {/* Glowing animation */}
+          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-indigo-400 to-purple-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
+          <span className="relative z-10">Hire Me</span>
+        </a>
+
+        {/* Resume Download Button */}
+        <a
+          href="/RaheezResume.pdf"
+          download
+          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg ${
+            theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
+          }`}
+        >
+          {/* Glowing animation */}
+          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-400 to-blue-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
+          <span className="relative z-10">Download My Resume</span>
+        </a>
+      </div>
     </section>
   );
 };
