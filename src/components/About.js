@@ -1,151 +1,78 @@
-// src/components/About.js
 import { useTheme } from "../ThemeContext";
+import { motion } from "framer-motion";
+import { FaLightbulb, FaCode, FaTools, FaBuilding, FaLaptopCode, FaRocket } from "react-icons/fa";
 
 const About = () => {
   const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <section
+    <motion.section
       id="about"
-      className={`py-12 flex flex-col items-center relative ${
-        theme === "light"
-          ? "bg-gray-100 text-gray-900"
-          : "bg-gray-900 text-white"
-      } overflow-hidden`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className={`py-20 flex flex-col items-center relative overflow-hidden transition-colors duration-500 shadow-2xl rounded-2xl border border-gray-200 dark:border-gray-700 ${
+        isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+      }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-600 opacity-20 blur-md animate-pulse"></div>
-      <div className="container mx-auto text-center px-4 relative z-10">
-        <h2
-          className={`text-6xl font-extrabold mb-6 ${
-            theme === "light" ? "text-gray-800" : "text-gray-200"
-          } font-cursive`}
-        >
+      <motion.div
+        className={`absolute inset-0 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-gray-900 via-black to-gray-800" : "bg-gradient-to-br from-gray-100 via-white to-gray-200"} opacity-50 blur-[180px] -z-10`}
+      />
+      <motion.div
+        className={`absolute w-80 h-80 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-purple-500 to-pink-600" : "bg-gradient-to-br from-blue-300 to-indigo-400"} opacity-50 rounded-full -top-24 -left-24`}
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className={`absolute w-52 h-52 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-blue-500 to-indigo-700" : "bg-gradient-to-br from-yellow-300 to-orange-400"} opacity-50 rounded-full -bottom-24 -right-24`}
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      <div className="container mx-auto text-center px-6 relative z-10">
+        <h2 className={`text-6xl font-extrabold mb-6 bg-gradient-to-r transition-all duration-500 ${isDark ? "from-purple-400 to-pink-500" : "from-blue-500 to-indigo-600"} text-transparent bg-clip-text drop-shadow-xl`}>
           About Me
         </h2>
-        <p
-          className={`text-lg mb-4 leading-relaxed ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          }`}
-        >
-          Hey there! I'm{" "}
-          <span className="font-bold text-indigo-600">Mohammed Raheez</span>, a
-          passionate developer and instructor.
+        <p className="text-lg mb-6 leading-relaxed">
+          Hey there! I'm <span className="font-bold text-indigo-600 dark:text-indigo-400">Mohammed Raheez</span>, a passionate developer and instructor.
         </p>
-        <p
-          className={`text-lg mb-4 leading-relaxed ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          }`}
-        >
-          I thrive on building innovative solutions, combining my love for
-          coding with my enthusiasm for teaching budding developers.
-        </p>
-        <h3
-          className={`text-4xl font-bold mb-4 ${
-            theme === "light" ? "text-gray-800" : "text-gray-200"
-          }`}
-        >
-          Key Skills
-        </h3>
-        <ul
-          className={`list-disc text-lg mb-6 ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          } text-left mx-auto max-w-2xl`}
-        >
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
           {[
-            "🌐 Full Stack MERN Development",
-            "🔧 Robust API Development",
-            "📱 Mobile App Push Notifications",
-            "🛠️ Proficient in C, C++, Java, JavaScript, and Python",
-            "☁️ Experience with Docker and AWS",
-          ].map((skill, index) => (
-            <li
+            { icon: <FaLightbulb className="text-yellow-500 text-3xl" />, text: "I thrive on building innovative solutions, combining my love for coding with my enthusiasm for teaching budding developers." },
+            { icon: <FaCode className="text-blue-500 text-3xl" />, text: "Skilled in full-stack development, specializing in modern web technologies." },
+            { icon: <FaTools className="text-red-500 text-3xl" />, text: "Proficient in C, C++, Java, JavaScript, and Python, with hands-on experience in Docker and AWS." },
+            { icon: <FaBuilding className="text-green-500 text-3xl" />, text: "Worked as a Java Full Stack Engineer Intern at Cognizant, honing professional development skills." },
+            { icon: <FaLaptopCode className="text-purple-500 text-3xl" />, text: "Mentor and educator, guiding aspiring developers while building scalable solutions in a startup." },
+            { icon: <FaRocket className="text-orange-500 text-3xl" />, text: "Always eager to explore and implement cutting-edge technologies in modern development." },
+          ].map((item, index) => (
+            <motion.div
               key={index}
-              className="mb-2 hover:underline transition duration-300"
+              className={`p-6 rounded-lg shadow-lg flex items-center space-x-4 hover:shadow-2xl transition-transform transform hover:scale-105 ${isDark ? "bg-white/10 text-white" : "bg-gray-100 text-gray-900"}`}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.2 }}
             >
-              {skill}
-            </li>
+              {item.icon}
+              <p className="text-lg">{item.text}</p>
+            </motion.div>
           ))}
-        </ul>
-        <p
-          className={`text-lg mb-4 leading-relaxed ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          }`}
-        >
-          My experience includes interning as a{" "}
-          <span className="font-bold text-indigo-600">
-            Java Full Stack Engineer
-          </span>{" "}
-          at Cognizant, where I honed my skills in professional development.
+        </motion.div>
+        <div className={`border-t-2 my-8 w-full ${isDark ? "border-gray-600" : "border-gray-400"}`} />
+        <p className="text-lg mb-6 leading-relaxed">
+          In a nutshell, I'm a multi-talented developer with a passion for innovation and a track record of creating exceptional software. I’m
+          excited to explore new horizons and nurture the next generation of developers.
         </p>
-        <p
-          className={`text-lg mb-4 leading-relaxed ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          }`}
-        >
-          In a startup, I contributed as an SDE, exploring Docker and AWS to
-          build scalable solutions while mentoring aspiring developers.
-        </p>
-        <div
-          className={`border-t-2 border-gray-300 my-8 w-full ${
-            theme === "light" ? "border-gray-400" : "border-gray-600"
-          }`}
-        />
-        <p
-          className={`text-lg mb-4 leading-relaxed ${
-            theme === "light" ? "text-gray-700" : "text-gray-300"
-          }`}
-        >
-          In a nutshell, I'm a multi-talented developer with a passion for
-          innovation and a track record of creating exceptional software. I’m
-          excited to explore new horizons and nurture the next generation of
-          developers.
-        </p>
-      
-        <div className="relative mt-8">
-  <a
-    href="https://linkedin.com/in/raheez"
-    className={`relative inline-block text-center transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg ${
-      theme === "light" ? "bg-black" : "bg-white text-gray-900"
-    }`}
-  >
-    {/* Glowing animation */}
-    <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-400 to-blue-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
-    <div className="rounded-lg py-4 px-6 relative z-10">
-      <span className="font-cursive text-2xl">🌟 Let's Connect! 🌟</span>
-    </div>
-  </a>
-</div>
-
+        <motion.div className="relative mt-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.8 }}>
+          <a
+            href="https://linkedin.com/in/raheez"
+            className="relative inline-block text-center py-4 px-6 text-lg font-semibold rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg transform transition duration-300 hover:scale-105"
+          >
+            🌟 Let's Connect! 🌟
+          </a>
+        </motion.div>
       </div>
-      <style jsx>{`
-        .shining-effect {
-          position: relative;
-          padding: 10px 20px;
-          border-radius: 5px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-          overflow: hidden;
-          display: inline-block;
-          animation: shine 1s infinite linear;
-        }
-
-        .shining-text {
-          font-size: 24px;
-          font-weight: bold;
-          text-align: center;
-          position: relative;
-          z-index: 1;
-        }
-
-        @keyframes shine {
-          0% {
-            background-position: -200%;
-          }
-          100% {
-            background-position: 200%;
-          }
-        }
-      `}</style>
-    </section>
+    </motion.section>
   );
 };
 

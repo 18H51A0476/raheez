@@ -1,83 +1,77 @@
-import { useTheme } from '../ThemeContext'; 
-import { FaCode, FaLaptopCode, FaProjectDiagram, FaChalkboardTeacher } from 'react-icons/fa'; 
-
+import { motion } from "framer-motion";
+import { FaCode, FaLaptopCode, FaProjectDiagram, FaChalkboardTeacher } from "react-icons/fa";
+import { useTheme } from "../ThemeContext";
 const Hero = () => {
   const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <section className={`min-h-screen flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${theme === 'light' ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-white'}`}>
-      <div className="text-center mb-6 px-4">
-        <h1 className="text-4xl md:text-8xl font-bold  bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text md:mt-4 mt-20 animate-pulse">
-          Hi, I'm Mohammed Raheez
-        </h1>
-        <p className="text-lg md:text-2xl mt-4 font-light tracking-wide animate-fade-in">
-          Software Developer and Instructor | PROBLEM SOLVING ENTHUSIAST
-        </p>
-        <p className="text-base md:text-xl mt-2 italic animate-fade-in">
-          Lifelong Student | Versatile MERN & Java Full Stack Developer | Tech Enthusiast
-        </p>
+    <section className={`relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden transition-colors duration-500 ${isDark ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
+      {/* Background Elements */}
+      <motion.div
+        className={`absolute inset-0 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-gray-900 via-black to-gray-800" : "bg-gradient-to-br from-gray-200 via-white to-gray-300"} opacity-50 blur-[180px] -z-10`}
+      />
+      <motion.div
+        className={`absolute w-80 h-80 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-purple-500 to-pink-600" : "bg-gradient-to-br from-blue-300 to-indigo-400"} opacity-50 rounded-full -top-24 -left-24`}
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div
+        className={`absolute w-52 h-52 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-blue-500 to-indigo-700" : "bg-gradient-to-br from-yellow-300 to-orange-400"} opacity-50 rounded-full -bottom-24 -right-24`}
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      {/* Hero Content */}
+      <div className="relative z-10 px-6">
+        <motion.h1
+          className={`text-6xl md:text-8xl font-extrabold bg-gradient-to-r transition-all duration-500 ${isDark ? "from-purple-400 to-pink-500" : "from-blue-500 to-indigo-600"} text-transparent bg-clip-text drop-shadow-xl`}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Mohammed Raheez
+        </motion.h1>
+        <motion.p
+          className={`text-lg md:text-2xl mt-5 font-medium tracking-wide transition-colors duration-500 ${isDark ? "text-gray-300" : "text-gray-700"}`}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          Software Engineer | Full Stack Developer | AI Enthusiast
+        </motion.p>
+        <motion.p
+          className={`text-base md:text-lg mt-3 italic transition-colors duration-500 ${isDark ? "text-gray-400" : "text-gray-600"}`}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          Building scalable, high-performance applications with cutting-edge technologies.
+        </motion.p>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8 mt-6">
-        {/* Expertise */}
-        <div className="flex flex-col items-center text-center transition duration-300 transform hover:scale-110">
-          <FaCode className="text-4xl mb-2 text-yellow-500 filter drop-shadow-glow animate-spin-slow" />
-          <h3 className="text-lg font-semibold bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text">Expertise</h3>
-          <p className="text-sm">Full Stack Development</p>
-          <p className="text-sm">Java & MERN Stack</p>
-        </div>
-
-        {/* Skills */}
-        <div className="flex flex-col items-center text-center transition duration-300 transform hover:scale-110">
-          <FaLaptopCode className="text-4xl mb-2 text-blue-500 filter drop-shadow-glow animate-spin-slow" />
-          <h3 className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-cyan-500 text-transparent bg-clip-text">Skills</h3>
-          <p className="text-sm">AWS, React, Docker</p>
-          <p className="text-sm">API Development</p>
-        </div>
-
-        {/* Projects */}
-        <div className="flex flex-col items-center text-center transition duration-300 transform hover:scale-110">
-          <FaProjectDiagram className="text-4xl mb-2 text-green-500 filter drop-shadow-glow animate-spin-slow" />
-          <h3 className="text-lg font-semibold bg-gradient-to-r from-green-400 to-lime-500 text-transparent bg-clip-text">Projects</h3>
-          <p className="text-sm">Scalable Applications</p>
-          <p className="text-sm">Real-Time Systems</p>
-        </div>
-
-        {/* Mentoring */}
-        <div className="flex flex-col items-center text-center transition duration-300 transform hover:scale-110">
-          <FaChalkboardTeacher className="text-4xl mb-2 text-red-500 filter drop-shadow-glow animate-spin-slow" />
-          <h3 className="text-lg font-semibold bg-gradient-to-r from-red-400 to-pink-500 text-transparent bg-clip-text">Mentoring</h3>
-          <p className="text-sm">Helping Budding Developers</p>
-          <p className="text-sm">Building Solutions</p>
-        </div>
-      </div>
-
-      {/* Button Container for Hire Me and Download Resume */}
-      <div className="flex flex-col items-center mt-8 space-y-4">
-        {/* Stylish and Animated Hire Me Button */}
-        <a
-          href="#contact"
-          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg ${
-            theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
-          }`}
-        >
-          {/* Glowing animation */}
-          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-indigo-400 to-purple-600 opacity-75 rounded-lg filter blur-md animate-pulse"></span>
-          <span className="relative z-10">Hire Me</span>
-        </a>
-
-        {/* Resume Download Button */}
-        <a
-          href="/RaheezResume.pdf"
-          download
-          className={`relative inline-block py-4 px-8 rounded-lg font-semibold transition duration-300 transform hover:scale-110 hover:bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg  animate-pulse ${
-            theme === 'light' ? 'bg-black' : 'bg-white text-gray-900'
-          }`}
-        >
-          {/* Glowing animation */}
-          <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-400 to-blue-600 opacity-75 rounded-lg filter blur-md "></span>
-          <span className="relative z-10">Download My Resume</span>
-        </a>
+      {/* Feature Icons */}
+      <div className="flex flex-wrap justify-center gap-10 mt-14 relative z-10">
+        {[
+          { icon: FaCode, title: "Development", color: "text-yellow-400", skills: ["Full Stack & AI Integration", "MERN, Go, AWS"] },
+          { icon: FaLaptopCode, title: "Tech Stack", color: "text-blue-400", skills: ["React, Tailwind, Docker", "Microservices & Cloud"] },
+          { icon: FaProjectDiagram, title: "Projects", color: "text-green-400", skills: ["Scalable Web & Mobile Apps", "Cloud-Native Solutions"] },
+          { icon: FaChalkboardTeacher, title: "Community", color: "text-red-400", skills: ["Tech Blogging & Mentorship", "Workshops & Open Source"] }
+        ].map(({ icon: Icon, title, color, skills }, index) => (
+          <motion.div
+            key={index}
+            className={`flex flex-col items-center text-center p-8 rounded-3xl transition-all duration-500 ${isDark ? "bg-white/10 backdrop-blur-md" : "bg-gray-50 shadow-xl"} hover:scale-110 hover:shadow-2xl`}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: index * 0.3 }}
+          >
+            <Icon className={`text-6xl mb-4 ${color} drop-shadow-lg`} />
+            <h3 className={`text-lg font-semibold transition-colors duration-500 ${isDark ? "text-gray-200" : "text-gray-800"}`}>{title}</h3>
+            {skills.map((skill, idx) => (
+              <p key={idx} className={`text-sm transition-colors duration-500 ${isDark ? "text-gray-400" : "text-gray-600"}`}>{skill}</p>
+            ))}
+          </motion.div>
+        ))}
       </div>
     </section>
   );
