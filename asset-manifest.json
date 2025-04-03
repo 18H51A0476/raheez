@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/raheez/static/css/main.e546c39a.css",
-    "main.js": "/raheez/static/js/main.5a3ddff3.js",
+    "main.js": "/raheez/static/js/main.10a92343.js",
     "index.html": "/raheez/index.html",
     "main.e546c39a.css.map": "/raheez/static/css/main.e546c39a.css.map",
-    "main.5a3ddff3.js.map": "/raheez/static/js/main.5a3ddff3.js.map"
+    "main.10a92343.js.map": "/raheez/static/js/main.10a92343.js.map"
   },
   "entrypoints": [
     "static/css/main.e546c39a.css",
-    "static/js/main.5a3ddff3.js"
+    "static/js/main.10a92343.js"
   ]
 }
