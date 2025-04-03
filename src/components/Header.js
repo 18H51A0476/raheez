@@ -65,11 +65,16 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-3xl focus:outline-none text-gray-800 dark:text-gray-100">
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
+      {/* Mobile Menu Toggle Button */}
+<div className="md:hidden">
+  <button 
+    onClick={toggleMenu} 
+    className={`text-3xl focus:outline-none transition-all duration-300 ${theme === "dark" ? "text-gray-100" : "text-gray-900"}`}
+  >
+    {isMenuOpen ? <FaTimes /> : <FaBars />}
+  </button>
+</div>
+
       </nav>
 
       {/* Mobile Navigation Menu */}
