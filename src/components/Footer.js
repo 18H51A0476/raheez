@@ -1,46 +1,99 @@
-import { useTheme } from '../ThemeContext';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <motion.footer 
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className={`py-6 text-center  transition-colors duration-500 shadow-lg rounded-2xl border ${isDark ? 'bg-gray-800 text-white border-gray-700' : 'bg-gray-200 text-gray-900 border-gray-300'}`}
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      style={{
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+        padding: "48px 24px",
+        textAlign: "center",
+        position: "relative",
+      }}
     >
-      <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        &copy; 2024 Mohammed Raheez. All rights reserved.
-      </p>
-      <div className="mt-4 flex justify-center space-x-8">
-        <motion.a
-          href="https://github.com/18h51a0476"
-          className={`relative flex items-center transition duration-300 transform hover:scale-110 ${isDark ? 'text-white' : 'text-indigo-600'}`}
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaGithub className="text-2xl mr-1" />
-          <span className={`hover:underline ${isDark ? 'text-gray-300' : 'text-indigo-600'}`}>GitHub</span>
-        </motion.a>
-        <motion.a
-          href="https://linkedin.com/in/raheez"
-          className={`relative flex items-center transition duration-300 transform hover:scale-110 ${isDark ? 'text-white' : 'text-indigo-600'}`}
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaLinkedin className="text-2xl mr-1" />
-          <span className={`hover:underline ${isDark ? 'text-gray-300' : 'text-indigo-600'}`}>LinkedIn</span>
-        </motion.a>
-        <motion.a
-          href="https://twitter.com/mohammed_raheez"
-          className={`relative flex items-center transition duration-300 transform hover:scale-110 ${isDark ? 'text-white' : 'text-indigo-600'}`}
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaTwitter className="text-2xl mr-1" />
-          <span className={`hover:underline ${isDark ? 'text-gray-300' : 'text-indigo-600'}`}>Twitter</span>
-        </motion.a>
+      {/* Top glow */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "300px",
+        height: "1px",
+        background: "linear-gradient(to right, transparent, rgba(99,102,241,0.5), transparent)",
+      }} />
+
+      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+        {/* Logo */}
+        <div style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "10px",
+          marginBottom: "24px",
+        }}>
+          <div style={{
+            width: "32px",
+            height: "32px",
+            borderRadius: "8px",
+            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "'JetBrains Mono', monospace",
+            fontWeight: 700,
+            fontSize: "13px",
+            color: "#fff",
+          }}>MR</div>
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "13px",
+            color: "#374151",
+          }}>Mohammed Raheez</span>
+        </div>
+
+        {/* Social Icons */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginBottom: "28px" }}>
+          {[
+            { icon: <FaGithub size={18} />, href: "https://github.com/18H51A0476", label: "GitHub" },
+            { icon: <FaLinkedin size={18} />, href: "https://linkedin.com/in/raheez", label: "LinkedIn" },
+            { icon: <FaEnvelope size={18} />, href: "mailto:mohammedraheez3@gmail.com", label: "Email" },
+          ].map((s) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              title={s.label}
+              whileHover={{ y: -3, color: "#6366f1" }}
+              style={{
+                width: "38px",
+                height: "38px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "9px",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                color: "#4b5563",
+                transition: "color 0.2s ease",
+              }}
+            >
+              {s.icon}
+            </motion.a>
+          ))}
+        </div>
+
+        <p style={{
+          fontSize: "12px",
+          color: "#1f2937",
+          fontFamily: "'JetBrains Mono', monospace",
+          letterSpacing: "0.05em",
+        }}>
+          © {new Date().getFullYear()} Mohammed Raheez · Built with React & Framer Motion
+        </p>
       </div>
     </motion.footer>
   );

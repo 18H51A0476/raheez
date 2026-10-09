@@ -1,78 +1,297 @@
 import { motion } from "framer-motion";
-import { FaCode, FaLaptopCode, FaProjectDiagram, FaChalkboardTeacher } from "react-icons/fa";
-import { useTheme } from "../ThemeContext";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
+import { SiGo, SiKubernetes, SiAmazonwebservices } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+
+const floatingTechs = [
+  { icon: <SiGo size={28} color="#00ACD7" />, label: "Go", x: "8%", y: "25%", delay: 0 },
+  { icon: <FaJava size={26} color="#f89820" />, label: "Java", x: "88%", y: "20%", delay: 1 },
+  { icon: <SiKubernetes size={26} color="#326ce5" />, label: "K8s", x: "5%", y: "65%", delay: 2 },
+  { icon: <SiAmazonwebservices size={30} color="#FF9900" />, label: "AWS", x: "88%", y: "68%", delay: 1.5 },
+];
+
 const Hero = () => {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
   return (
-    <section className={`relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden transition-colors duration-500 ${isDark ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
-      {/* Background Elements */}
-      <motion.div
-        className={`absolute inset-0 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-gray-900 via-black to-gray-800" : "bg-gradient-to-br from-gray-200 via-white to-gray-300"} opacity-50 blur-[180px] -z-10`}
-      />
-      <motion.div
-        className={`absolute w-80 h-80 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-purple-500 to-pink-600" : "bg-gradient-to-br from-blue-300 to-indigo-400"} opacity-50 rounded-full -top-24 -left-24`}
-        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className={`absolute w-52 h-52 transition-all duration-500 ${isDark ? "bg-gradient-to-br from-blue-500 to-indigo-700" : "bg-gradient-to-br from-yellow-300 to-orange-400"} opacity-50 rounded-full -bottom-24 -right-24`}
-        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
+    <section
+      id="hero"
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
+        padding: "120px 24px 80px",
+      }}
+    >
+      {/* Background Orbs */}
+      <div style={{
+        position: "absolute", top: "10%", left: "15%",
+        width: "500px", height: "500px",
+        background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)",
+        borderRadius: "50%", filter: "blur(40px)", pointerEvents: "none",
+      }} />
+      <div style={{
+        position: "absolute", bottom: "10%", right: "10%",
+        width: "400px", height: "400px",
+        background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)",
+        borderRadius: "50%", filter: "blur(40px)", pointerEvents: "none",
+      }} />
+      <div style={{
+        position: "absolute", top: "50%", left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "800px", height: "800px",
+        background: "radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)",
+        borderRadius: "50%", filter: "blur(60px)", pointerEvents: "none",
+      }} />
 
-      {/* Hero Content */}
-      <div className="relative z-10 px-6">
+      {/* Floating Tech Icons */}
+      {floatingTechs.map((tech, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.2 + tech.delay * 0.3, duration: 0.5 }}
+          style={{
+            position: "absolute",
+            left: tech.x,
+            top: tech.y,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "6px",
+          }}
+          className="float-animation hidden-on-mobile"
+        >
+          <div style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "12px",
+            padding: "14px",
+            backdropFilter: "blur(10px)",
+          }}>
+            {tech.icon}
+          </div>
+          <span style={{ fontSize: "11px", color: "#64748b", fontFamily: "'JetBrains Mono', monospace" }}>{tech.label}</span>
+        </motion.div>
+      ))}
+
+      {/* Main Content */}
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "800px" }}>
+
+        {/* Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            background: "rgba(99,102,241,0.1)",
+            border: "1px solid rgba(99,102,241,0.25)",
+            borderRadius: "100px",
+            padding: "6px 16px",
+            marginBottom: "32px",
+          }}
+        >
+          <span style={{
+            width: "7px", height: "7px",
+            background: "#22c55e",
+            borderRadius: "50%",
+            boxShadow: "0 0 8px #22c55e",
+            animation: "pulse 2s infinite",
+          }} />
+          <span style={{
+            fontSize: "12px",
+            color: "#94a3b8",
+            fontFamily: "'JetBrains Mono', monospace",
+            letterSpacing: "0.05em",
+          }}>
+            Available for new opportunities
+          </span>
+        </motion.div>
+
+        {/* Name */}
         <motion.h1
-          className={`text-6xl md:text-8xl font-extrabold bg-gradient-to-r transition-all duration-500 ${isDark ? "from-purple-400 to-pink-500" : "from-blue-500 to-indigo-600"} text-transparent bg-clip-text drop-shadow-xl`}
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          style={{
+            fontSize: "clamp(48px, 8vw, 88px)",
+            fontWeight: 800,
+            lineHeight: 1.05,
+            letterSpacing: "-0.03em",
+            marginBottom: "16px",
+            background: "linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
         >
-          Mohammed Raheez
+          Mohammed
+          <br />
+          <span style={{
+            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}>Raheez</span>
         </motion.h1>
+
+        {/* Title */}
         <motion.p
-          className={`text-lg md:text-2xl mt-5 font-medium tracking-wide transition-colors duration-500 ${isDark ? "text-gray-300" : "text-gray-700"}`}
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          style={{
+            fontSize: "clamp(16px, 2.5vw, 20px)",
+            color: "#64748b",
+            fontWeight: 500,
+            letterSpacing: "0.05em",
+            fontFamily: "'JetBrains Mono', monospace",
+            marginBottom: "24px",
+          }}
         >
-          Software Engineer | Full Stack Developer | AI Enthusiast
+          Software Engineer II · Distributed Systems · Backend
         </motion.p>
+
+        {/* Tagline */}
         <motion.p
-          className={`text-base md:text-lg mt-3 italic transition-colors duration-500 ${isDark ? "text-gray-400" : "text-gray-600"}`}
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ delay: 0.45, duration: 0.6 }}
+          style={{
+            fontSize: "clamp(15px, 2vw, 18px)",
+            color: "#475569",
+            maxWidth: "600px",
+            margin: "0 auto 48px",
+            lineHeight: 1.7,
+            fontWeight: 400,
+          }}
         >
-          Building scalable, high-performance applications with cutting-edge technologies.
+          4+ years building production-grade distributed systems in Go, Java & Node.js.
+          Currently at <span style={{ color: "#94a3b8", fontWeight: 600 }}>F5 Distributed Cloud</span> —
+          cutting failure convergence from 180s → 3s.
         </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.6 }}
+          style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "56px" }}
+        >
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(99,102,241,0.5)" }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              padding: "14px 32px",
+              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              color: "#fff",
+              borderRadius: "10px",
+              fontSize: "15px",
+              fontWeight: 600,
+              boxShadow: "0 0 20px rgba(99,102,241,0.3)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Get in Touch →
+          </motion.a>
+          <motion.a
+            href="#experience"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              padding: "14px 32px",
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "#e2e8f0",
+              borderRadius: "10px",
+              fontSize: "15px",
+              fontWeight: 600,
+              backdropFilter: "blur(10px)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            View Experience
+          </motion.a>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+        >
+          {[
+            { icon: <FaGithub size={20} />, href: "https://github.com/18H51A0476", label: "GitHub" },
+            { icon: <FaLinkedin size={20} />, href: "https://linkedin.com/in/raheez", label: "LinkedIn" },
+            { icon: <FaEnvelope size={20} />, href: "mailto:mohammedraheez3@gmail.com", label: "Email" },
+          ].map((s) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -3, color: "#6366f1" }}
+              title={s.label}
+              style={{
+                width: "42px",
+                height: "42px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "10px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "#64748b",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {s.icon}
+            </motion.a>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Feature Icons */}
-      <div className="flex flex-wrap justify-center gap-10 mt-14 relative z-10">
-        {[
-          { icon: FaCode, title: "Development", color: "text-yellow-400", skills: ["Full Stack & AI Integration", "MERN, Go, AWS"] },
-          { icon: FaLaptopCode, title: "Tech Stack", color: "text-blue-400", skills: ["React, Tailwind, Docker", "Microservices & Cloud"] },
-          { icon: FaProjectDiagram, title: "Projects", color: "text-green-400", skills: ["Scalable Web & Mobile Apps", "Cloud-Native Solutions"] },
-          { icon: FaChalkboardTeacher, title: "Community", color: "text-red-400", skills: ["Tech Blogging & Mentorship", "Workshops & Open Source"] }
-        ].map(({ icon: Icon, title, color, skills }, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col items-center text-center p-8 rounded-3xl transition-all duration-500 ${isDark ? "bg-white/10 backdrop-blur-md" : "bg-gray-50 shadow-xl"} hover:scale-110 hover:shadow-2xl`}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: index * 0.3 }}
-          >
-            <Icon className={`text-6xl mb-4 ${color} drop-shadow-lg`} />
-            <h3 className={`text-lg font-semibold transition-colors duration-500 ${isDark ? "text-gray-200" : "text-gray-800"}`}>{title}</h3>
-            {skills.map((skill, idx) => (
-              <p key={idx} className={`text-sm transition-colors duration-500 ${isDark ? "text-gray-400" : "text-gray-600"}`}>{skill}</p>
-            ))}
-          </motion.div>
-        ))}
-      </div>
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "8px",
+          color: "#374151",
+        }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          style={{ fontSize: "20px" }}
+        >↓</motion.div>
+      </motion.div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+        @media (max-width: 768px) {
+          .hidden-on-mobile { display: none !important; }
+        }
+      `}</style>
     </section>
   );
 };

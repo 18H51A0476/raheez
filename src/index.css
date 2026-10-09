@@ -1,52 +1,116 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-3: #06b6d4;
+  --glow: rgba(99, 102, 241, 0.15);
+}
+
 html {
   scroll-behavior: smooth;
 }
-/* src/index.css */
-/* src/index.css */
+
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0f;
+  color: #e2e8f0;
+  overflow-x: hidden;
 }
 
-/* Cursive font for the header */
-h1 {
-  font-family: 'Pacifico', cursive; /* Apply cursive font */
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
 }
 
-/* Light Mode Styles */
-.light {
-  background-color: #e0f7fa; /* Light blue background */
-  color: #212529; /* Dark text */
+/* Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: #fff;
 }
 
-/* Dark Mode Styles */
-.dark {
-  background-color: #1a202c; /* Navy background */
-  color: #f7fafc; /* Light text */
-}
-
-/* Additional Styles for Header Links */
 a {
-  color: inherit; /* Inherit text color */
-  text-decoration: none; /* Remove underline */
-  padding: 5px; /* Add some padding for better click area */
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Header Gradient */
-header {
-  background: linear-gradient(to right, #90caf9, #ffffff); /* Light mode gradient */
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
 
-/* Shadow Effect */
-header {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for both modes */
+/* Utility classes */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Hover Effect for Links */
-a:hover {
-  color: #0d47a1; /* Darker blue on hover for light mode */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-border {
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1), inset 0 0 20px rgba(99, 102, 241, 0.05);
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
 }
