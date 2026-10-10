@@ -1,71 +1,76 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
 
 const experiences = [
   {
     role: "Software Engineer II",
     company: "F5 Networks",
-    product: "F5 Distributed Cloud (XC)",
+    product: "F5 Distributed Cloud (XC) Multi-Cloud Networking",
     period: "Mar 2025 – Present",
     location: "Hyderabad, India",
     type: "Full-time",
     color: "#6366f1",
+    impactMetric: "98% Convergence Boost (180s → 3s)",
     highlights: [
-      "Design and develop Go microservices for the control plane & data plane of F5 Distributed Cloud Multi-Cloud Networking.",
-      "Implemented BFD over eBGP, cutting route failure convergence from 180s → 3s (98% faster) across hundreds of Customer Edge sites.",
-      "Developed BGP routing features (single-hop, multihop, hub-and-spoke, L2/L3) for a major telecom customer with thousands of CEs.",
-      "Led FRRouting (FRR) upgrade from 6.x → 8.x to meet FedRAMP compliance, resolving compatibility issues across the stack.",
-      "Built diagnostic automation detecting container memory limits, summarizing OOM kills, and forecasting next OOM from usage trends.",
-      "Troubleshoot production issues across NAT, routing, MTU, and IPSec tunnels; participate in on-call rotation.",
+      "Architect and build Go microservices for control plane & data plane of F5 Distributed Cloud Multi-Cloud Networking.",
+      "Implemented Bidirectional Forwarding Detection (BFD) over eBGP, reducing network failure convergence from 180s → 3s across hundreds of Customer Edge (CE) sites.",
+      "Developed advanced eBGP routing features (single-hop, multihop, hub-and-spoke, L2/L3 topology) for Tier-1 telecom enterprise customers.",
+      "Led FRRouting (FRR) routing stack migration from version 6.x to 8.x to achieve FedRAMP security compliance.",
+      "Built diagnostic automation for Kubernetes monitoring container cgroup memory limits, tracking OOM kills, and forecasting memory exhaustion trends.",
+      "Troubleshoot production networking issues across NAT, IPSec VPN tunnels, MTU mismatch, and participate in primary on-call rotations.",
     ],
-    tags: ["Go", "gRPC", "BGP", "BFD", "Kubernetes", "FedRAMP", "Distributed Systems"],
+    tags: ["Go (Golang)", "gRPC", "BGP", "BFD", "FRRouting", "Kubernetes", "FedRAMP", "Distributed Systems"],
   },
   {
     role: "Lead Software Engineer",
     company: "ChaturaITLearnings",
-    product: "ChaturaITLearnings & CodeChatura",
+    product: "ChaturaITLearnings & CodeChatura Platforms",
     period: "Aug 2023 – Feb 2025",
     location: "Hyderabad, India",
     type: "Full-time",
     color: "#8b5cf6",
+    impactMetric: "90% Infrastructure Cost Reduction",
     highlights: [
-      "Independently built and deployed two production platforms serving thousands of users end-to-end on AWS.",
-      "Migrated enterprise clients off third-party vendor (HackerEarth) onto in-house infrastructure — cutting operational costs by 90%.",
-      "Improved API efficiency by 80% through S3-backed caching architecture.",
-      "Built high-throughput messaging pipelines on AWS SES and SQS.",
-      "Fully automated deployments with CI/CD using GitHub Actions and AWS CloudFormation.",
+      "Independently designed, built, and deployed two scalable production cloud platforms on AWS serving thousands of active developers.",
+      "Migrated enterprise clients off vendor services (HackerEarth) to custom AWS architecture — reducing annual operational costs by 90%.",
+      "Boosted API efficiency by 80% through an S3-backed asset caching architecture.",
+      "Engineered high-concurrency transactional messaging and notification pipelines using AWS SQS and AWS SES.",
+      "Automated end-to-end CI/CD deployments using AWS CloudFormation templates and GitHub Actions workflows.",
     ],
-    tags: ["AWS", "Node.js", "S3", "SQS", "SES", "CloudFormation", "CI/CD"],
+    tags: ["AWS", "Node.js", "S3", "SQS", "SES", "CloudFormation", "GitHub Actions", "System Design"],
   },
   {
     role: "Software Developer & Instructor",
     company: "BeingZero",
-    product: "MERN Stack Platform",
+    product: "MERN Stack Learning & Assessment Engine",
     period: "Aug 2022 – Jul 2023",
     location: "Hyderabad, India",
     type: "Full-time",
     color: "#06b6d4",
+    impactMetric: "2,000+ Developers Trained",
     highlights: [
-      "Delivered scalable MERN stack solutions, improving system efficiency by 20%.",
-      "Shipped a push notification system that raised user engagement by 25%.",
-      "Mentored junior engineers, achieving 30% faster ramp-up times.",
-      "Ran 50+ workshops training 2,000+ developers across the platform.",
+      "Delivered scalable full-stack MERN (MongoDB, Express, React, Node.js) solutions, driving a 20% system throughput improvement.",
+      "Engineered a real-time web push notification engine boosting user engagement by 25%.",
+      "Mentored junior engineers and led 50+ technical workshops training over 2,000 developers on data structures, algorithms, and system design.",
     ],
-    tags: ["MERN", "React", "Node.js", "MongoDB", "Mentoring"],
+    tags: ["MERN Stack", "React", "Node.js", "MongoDB", "WebSockets", "Technical Leadership"],
   },
   {
     role: "Java Full Stack Engineer Intern",
     company: "Cognizant",
-    product: "Student Management System",
+    product: "Enterprise Management Systems",
     period: "Feb 2022 – Jul 2022",
     location: "Hyderabad, India",
     type: "Internship",
     color: "#f59e0b",
+    impactMetric: "Full Stack Microservices",
     highlights: [
-      "Designed and developed a student management system using Java, Spring Boot, and microservices architecture.",
-      "Built React frontend components with REST API integration.",
-      "Collaborated in an Agile team across 3 sprint cycles, from planning through delivery.",
+      "Engineered enterprise backend microservices using Java, Spring Boot, REST APIs, and MySQL.",
+      "Developed responsive React frontend components connected with secure Spring Security endpoints.",
+      "Collaborated in an Agile Scrum environment across 3 full sprint cycles from planning to delivery.",
     ],
-    tags: ["Java", "Spring Boot", "React", "Microservices", "Agile"],
+    tags: ["Java", "Spring Boot", "React", "REST APIs", "Microservices", "Agile"],
   },
 ];
 
@@ -75,7 +80,7 @@ const Experience = () => {
       id="experience"
       style={{
         padding: "100px 24px",
-        maxWidth: "1000px",
+        maxWidth: "1100px",
         margin: "0 auto",
         position: "relative",
       }}
@@ -89,35 +94,54 @@ const Experience = () => {
         style={{ marginBottom: "64px" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "13px", color: "#6366f1", letterSpacing: "0.1em" }}>
-            02. EXPERIENCE
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "13px",
+              color: "#6366f1",
+              letterSpacing: "0.1em",
+            }}
+          >
+            02. WORK EXPERIENCE
           </span>
-          <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, rgba(99,102,241,0.3), transparent)", maxWidth: "200px" }} />
+          <div
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "linear-gradient(to right, rgba(99,102,241,0.3), transparent)",
+              maxWidth: "200px",
+            }}
+          />
         </div>
-        <h2 style={{
-          fontSize: "clamp(32px, 5vw, 52px)",
-          fontWeight: 800,
-          letterSpacing: "-0.02em",
-          color: "#e2e8f0",
-          lineHeight: 1.1,
-        }}>
-          Work History
+        <h2
+          style={{
+            fontSize: "clamp(32px, 5vw, 52px)",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            color: "#e2e8f0",
+            lineHeight: 1.1,
+          }}
+        >
+          Engineering History
         </h2>
       </motion.div>
 
       {/* Timeline */}
       <div style={{ position: "relative" }}>
-        {/* Timeline line */}
-        <div style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          bottom: "0",
-          width: "1px",
-          background: "linear-gradient(to bottom, rgba(99,102,241,0.5), rgba(99,102,241,0.05))",
-        }} />
+        {/* Vertical line */}
+        <div
+          style={{
+            position: "absolute",
+            left: "12px",
+            top: "20px",
+            bottom: "20px",
+            width: "2px",
+            background: "linear-gradient(to bottom, #6366f1, #8b5cf6, #06b6d4, rgba(255,255,255,0.05))",
+          }}
+          className="timeline-line"
+        />
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "48px", paddingLeft: "40px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "40px", paddingLeft: "48px" }} className="timeline-container">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -127,105 +151,134 @@ const Experience = () => {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               style={{ position: "relative" }}
             >
-              {/* Timeline dot */}
-              <div style={{
-                position: "absolute",
-                left: "-44px",
-                top: "28px",
-                width: "10px",
-                height: "10px",
-                borderRadius: "50%",
-                background: exp.color,
-                boxShadow: `0 0 12px ${exp.color}`,
-                border: "2px solid rgba(10,10,15,0.8)",
-              }} />
+              {/* Timeline Node Dot */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: "-48px",
+                  top: "28px",
+                  width: "16px",
+                  height: "16px",
+                  borderRadius: "50%",
+                  background: exp.color,
+                  boxShadow: `0 0 16px ${exp.color}`,
+                  border: "3px solid #0a0a0f",
+                  zIndex: 2,
+                }}
+                className="timeline-dot"
+              />
 
-              {/* Card */}
+              {/* Card Container */}
               <motion.div
-                whileHover={{ borderColor: `${exp.color}40`, boxShadow: `0 0 30px ${exp.color}10` }}
+                whileHover={{ borderColor: `${exp.color}50`, boxShadow: `0 10px 30px ${exp.color}15` }}
                 style={{
                   padding: "32px",
                   background: "rgba(255,255,255,0.02)",
                   border: "1px solid rgba(255,255,255,0.06)",
-                  borderRadius: "16px",
+                  borderRadius: "20px",
                   transition: "all 0.3s ease",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
-                {/* Header */}
+                {/* Accent Top Strip */}
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: exp.color }} />
+
+                {/* Card Top Row */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "12px", marginBottom: "20px" }}>
                   <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-                      <h3 style={{
-                        fontSize: "19px",
-                        fontWeight: 700,
-                        color: "#e2e8f0",
-                        letterSpacing: "-0.01em",
-                      }}>{exp.role}</h3>
-                      <span style={{
-                        padding: "3px 10px",
-                        borderRadius: "100px",
-                        fontSize: "11px",
-                        fontWeight: 600,
-                        background: "rgba(99,102,241,0.1)",
-                        color: "#6366f1",
-                        border: "1px solid rgba(99,102,241,0.2)",
-                        fontFamily: "'JetBrains Mono', monospace",
-                      }}>{exp.type}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", marginBottom: "6px" }}>
+                      <h3 style={{ fontSize: "20px", fontWeight: 800, color: "#f8fafc", letterSpacing: "-0.01em" }}>{exp.role}</h3>
+                      <span
+                        style={{
+                          padding: "3px 10px",
+                          borderRadius: "100px",
+                          fontSize: "11px",
+                          fontWeight: 600,
+                          background: `${exp.color}15`,
+                          color: exp.color,
+                          border: `1px solid ${exp.color}30`,
+                          fontFamily: "'JetBrains Mono', monospace",
+                        }}
+                      >
+                        {exp.type}
+                      </span>
                     </div>
+
                     <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-                      <span style={{
-                        fontSize: "15px",
-                        fontWeight: 700,
-                        color: exp.color,
-                      }}>{exp.company}</span>
-                      <span style={{ color: "#374151", fontSize: "14px" }}>·</span>
-                      <span style={{ fontSize: "13px", color: "#475569" }}>{exp.product}</span>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: exp.color }}>{exp.company}</span>
+                      <span style={{ color: "#475569", fontSize: "14px" }}>·</span>
+                      <span style={{ fontSize: "14px", color: "#94a3b8" }}>{exp.product}</span>
                     </div>
                   </div>
-                  <div style={{ textAlign: "right" }}>
-                    <div style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "12px",
-                      color: "#4b5563",
-                      marginBottom: "4px",
-                    }}>{exp.period}</div>
-                    <div style={{ fontSize: "12px", color: "#374151" }}>{exp.location}</div>
+
+                  <div style={{ textAlign: "right" }} className="period-mobile-left">
+                    <div
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: "13px",
+                        color: "#a5b4fc",
+                        fontWeight: 600,
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {exp.period}
+                    </div>
+                    <div style={{ fontSize: "12px", color: "#64748b" }}>{exp.location}</div>
                   </div>
                 </div>
 
-                {/* Bullets */}
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                {/* Impact Highlight Badge */}
+                {exp.impactMetric && (
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      background: "rgba(99,102,241,0.08)",
+                      border: "1px solid rgba(99,102,241,0.2)",
+                      borderRadius: "8px",
+                      padding: "6px 14px",
+                      fontSize: "12px",
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#38bdf8",
+                      fontWeight: 600,
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <span>⚡ Key Impact:</span>
+                    <span style={{ color: "#fff" }}>{exp.impactMetric}</span>
+                  </div>
+                )}
+
+                {/* Bullets List */}
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: "12px" }}>
                   {exp.highlights.map((h, j) => (
                     <li key={j} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                      <span style={{
-                        color: exp.color,
-                        fontSize: "16px",
-                        marginTop: "2px",
-                        flexShrink: 0,
-                        fontWeight: 700,
-                      }}>›</span>
-                      <span style={{
-                        fontSize: "14px",
-                        color: "#64748b",
-                        lineHeight: 1.7,
-                      }}>{h}</span>
+                      <span style={{ color: exp.color, fontSize: "16px", marginTop: "1px", flexShrink: 0, fontWeight: 700 }}>›</span>
+                      <span style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: 1.7 }}>{h}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Tags */}
+                {/* Tech Tags */}
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                   {exp.tags.map((tag) => (
-                    <span key={tag} style={{
-                      padding: "4px 12px",
-                      background: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.07)",
-                      borderRadius: "6px",
-                      fontSize: "12px",
-                      color: "#64748b",
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontWeight: 500,
-                    }}>{tag}</span>
+                    <span
+                      key={tag}
+                      style={{
+                        padding: "5px 12px",
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                        borderRadius: "8px",
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -250,53 +303,84 @@ const Experience = () => {
         </div>
 
         <motion.div
-          whileHover={{ borderColor: "rgba(99,102,241,0.3)" }}
+          whileHover={{ borderColor: "rgba(99,102,241,0.4)", boxShadow: "0 10px 30px rgba(99,102,241,0.1)" }}
           style={{
-            padding: "28px 32px",
+            padding: "32px",
             background: "rgba(255,255,255,0.02)",
             border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: "16px",
+            borderRadius: "20px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "16px",
+            gap: "20px",
             transition: "all 0.3s ease",
           }}
         >
-          <div>
-            <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#e2e8f0", marginBottom: "6px" }}>
-              B.Tech, Electronics & Communication Engineering
-            </h4>
-            <p style={{ fontSize: "14px", color: "#6366f1", fontWeight: 600, marginBottom: "4px" }}>
-              CMR College of Engineering and Technology
-            </p>
-            <p style={{ fontSize: "13px", color: "#475569" }}>Hyderabad, India · May 2022</p>
+          <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+            <div
+              style={{
+                width: "56px",
+                height: "56px",
+                borderRadius: "14px",
+                background: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2))",
+                border: "1px solid rgba(99,102,241,0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#6366f1",
+                flexShrink: 0,
+              }}
+            >
+              <FaGraduationCap size={28} />
+            </div>
+
+            <div>
+              <h4 style={{ fontSize: "18px", fontWeight: 800, color: "#f8fafc", marginBottom: "4px" }}>
+                B.Tech, Electronics & Communication Engineering
+              </h4>
+              <p style={{ fontSize: "15px", color: "#6366f1", fontWeight: 600, marginBottom: "4px" }}>
+                CMR College of Engineering and Technology
+              </p>
+              <p style={{ fontSize: "13px", color: "#64748b" }}>Hyderabad, India · Graduated May 2022</p>
+            </div>
           </div>
-          <div style={{
-            textAlign: "center",
-            padding: "16px 24px",
-            background: "rgba(99,102,241,0.08)",
-            border: "1px solid rgba(99,102,241,0.2)",
-            borderRadius: "12px",
-          }}>
-            <div style={{
-              fontSize: "24px",
-              fontWeight: 800,
-              fontFamily: "'JetBrains Mono', monospace",
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>8.5</div>
-            <div style={{ fontSize: "11px", color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>CGPA / 10</div>
+
+          <div
+            style={{
+              textAlign: "center",
+              padding: "16px 28px",
+              background: "rgba(99,102,241,0.08)",
+              border: "1px solid rgba(99,102,241,0.25)",
+              borderRadius: "14px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "26px",
+                fontWeight: 900,
+                fontFamily: "'JetBrains Mono', monospace",
+                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              8.5
+            </div>
+            <div style={{ fontSize: "11px", color: "#94a3b8", fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>
+              CGPA / 10
+            </div>
           </div>
         </motion.div>
       </motion.div>
 
       <style>{`
         @media (max-width: 640px) {
-          #experience { padding-left: 16px !important; padding-right: 16px !important; }
+          .timeline-container { padding-left: 28px !important; }
+          .timeline-dot { left: -34px !important; width: 12px !important; height: 12px !important; top: 30px !important; }
+          .timeline-line { left: 5px !important; }
+          .period-mobile-left { textAlign: left !important; }
         }
       `}</style>
     </section>

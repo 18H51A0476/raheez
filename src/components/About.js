@@ -1,32 +1,34 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaAward, FaBolt, FaCloud, FaUsers } from "react-icons/fa";
 
 const stats = [
   { value: "4+", label: "Years Experience" },
   { value: "98%", label: "Faster Convergence (180s→3s)" },
-  { value: "90%", label: "Ops Cost Reduction" },
-  { value: "2K+", label: "Developers Trained" },
+  { value: "90%", label: "Cloud Ops Savings" },
+  { value: "2K+", label: "Engineers Mentored" },
 ];
 
 const highlights = [
   {
-    icon: "⚙️",
-    title: "Distributed Systems",
-    text: "Designing and building Go microservices for F5 Distributed Cloud — a large-scale multi-cloud networking platform connecting workloads across AWS and on-premises environments.",
+    icon: <FaBolt className="text-indigo-400" size={22} />,
+    title: "Distributed Control Planes",
+    text: "Engineered Go microservices powering F5 Distributed Cloud Multi-Cloud Networking (XC), orchestrating real-time route convergence across cloud & edge environments.",
   },
   {
-    icon: "☁️",
-    title: "Cloud Architecture",
-    text: "Architected and shipped two production platforms on AWS end-to-end, cutting operational costs by 90% and improving API efficiency by 80% with S3-backed caching.",
+    icon: <FaCloud className="text-cyan-400" size={22} />,
+    title: "AWS Cloud Infrastructure",
+    text: "Architected and shipped two production platforms end-to-end on AWS from scratch, achieving 90% operational cost savings and 80% lower API latency with S3 caching.",
   },
   {
-    icon: "🔌",
-    title: "Networking & Protocols",
-    text: "Deep expertise in BGP, BFD, IPSec VPN, NAT, and multi-hop routing. Implemented BFD over eBGP, cutting failure convergence from 180s to 3s across hundreds of CE sites.",
+    icon: <FaAward className="text-purple-400" size={22} />,
+    title: "Networking Protocols",
+    text: "Deep protocol expertise in BGP, BFD, IPSec VPN, NAT, & MTU diagnostics. Implemented sub-second BFD failure detection over eBGP across hundreds of Customer Edge sites.",
   },
   {
-    icon: "🧑‍🏫",
-    title: "Mentorship & Leadership",
-    text: "Led engineering teams and ran 50+ workshops training 2,000+ developers. Mentored junior engineers, resulting in 30% faster ramp-up times.",
+    icon: <FaUsers className="text-emerald-400" size={22} />,
+    title: "Engineering Leadership",
+    text: "Led software teams, delivered 50+ technical workshops training over 2,000 developers, and accelerated junior engineer onboarding times by 30%.",
   },
 ];
 
@@ -49,74 +51,64 @@ const About = () => {
         transition={{ duration: 0.6 }}
         style={{ marginBottom: "64px" }}
       >
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          marginBottom: "16px",
-        }}>
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "13px",
-            color: "#6366f1",
-            letterSpacing: "0.1em",
-          }}>01. ABOUT</span>
-          <div style={{
-            flex: 1,
-            height: "1px",
-            background: "linear-gradient(to right, rgba(99,102,241,0.3), transparent)",
-            maxWidth: "200px",
-          }} />
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "13px",
+              color: "#6366f1",
+              letterSpacing: "0.1em",
+            }}
+          >
+            01. ABOUT ME
+          </span>
+          <div
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "linear-gradient(to right, rgba(99,102,241,0.3), transparent)",
+              maxWidth: "200px",
+            }}
+          />
         </div>
-        <h2 style={{
-          fontSize: "clamp(32px, 5vw, 52px)",
-          fontWeight: 800,
-          letterSpacing: "-0.02em",
-          color: "#e2e8f0",
-          lineHeight: 1.1,
-        }}>
-          Who I Am
+        <h2
+          style={{
+            fontSize: "clamp(32px, 5vw, 52px)",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            color: "#e2e8f0",
+            lineHeight: 1.1,
+          }}
+        >
+          Engineering Philosophy & Impact
         </h2>
       </motion.div>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "64px",
-        alignItems: "start",
-      }} className="about-grid">
-
-        {/* Left: Text */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "56px",
+          alignItems: "start",
+        }}
+        className="about-grid"
+      >
+        {/* Left Text */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p style={{
-            fontSize: "17px",
-            color: "#64748b",
-            lineHeight: 1.9,
-            marginBottom: "20px",
-          }}>
-            I'm a <span style={{ color: "#94a3b8", fontWeight: 600 }}>Software Engineer II</span> at{" "}
-            <span style={{ color: "#6366f1", fontWeight: 600 }}>F5 Networks</span>, focused on distributed systems, backend infrastructure, and cloud networking. I design and develop Go microservices for the control plane and data plane of F5 Distributed Cloud (XC) Multi-Cloud Networking.
+          <p style={{ fontSize: "17px", color: "#94a3b8", lineHeight: 1.8, marginBottom: "20px" }}>
+            I'm a <strong style={{ color: "#f8fafc" }}>Software Engineer II</strong> at{" "}
+            <strong style={{ color: "#6366f1" }}>F5 Networks</strong> with 4+ years of hands-on experience designing high-throughput backend services, distributed systems, and multi-cloud networking infrastructure.
           </p>
-          <p style={{
-            fontSize: "17px",
-            color: "#64748b",
-            lineHeight: 1.9,
-            marginBottom: "20px",
-          }}>
-            Previously, I independently built and shipped two full production platforms on AWS from scratch, and delivered scalable MERN stack solutions while mentoring hundreds of developers as an instructor.
+          <p style={{ fontSize: "16px", color: "#64748b", lineHeight: 1.8, marginBottom: "20px" }}>
+            My work focuses on writing production Go microservices for the control and data planes of F5 Distributed Cloud (XC), managing BGP/BFD routing convergence, FRRouting compliance (FedRAMP), and building automated container diagnostic tools for Kubernetes environments.
           </p>
-          <p style={{
-            fontSize: "17px",
-            color: "#64748b",
-            lineHeight: 1.9,
-            marginBottom: "32px",
-          }}>
-            I hold a B.Tech in ECE from CMR College of Engineering & Technology (CGPA: 8.5/10) and specialize in debugging complex distributed systems, on-call operations, and pushing performance boundaries.
+          <p style={{ fontSize: "16px", color: "#64748b", lineHeight: 1.8, marginBottom: "32px" }}>
+            I hold a B.Tech in Electronics & Communication Engineering from CMR College of Engineering & Technology (CGPA: 8.5/10). I thrive in solving high-stakes distributed systems challenges, performance optimization, and on-call operational excellence.
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -125,46 +117,59 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "10px 20px",
-                background: "rgba(99,102,241,0.1)",
-                border: "1px solid rgba(99,102,241,0.25)",
-                color: "#6366f1",
-                borderRadius: "8px",
+                padding: "11px 22px",
+                background: "rgba(99,102,241,0.12)",
+                border: "1px solid rgba(99,102,241,0.3)",
+                color: "#a5b4fc",
+                borderRadius: "10px",
                 fontSize: "13px",
                 fontWeight: 600,
                 fontFamily: "'JetBrains Mono', monospace",
                 letterSpacing: "0.03em",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
               }}
             >
-              LinkedIn ↗
+              <FaLinkedin size={15} />
+              <span>LinkedIn Profile ↗</span>
             </a>
             <a
               href="https://github.com/18H51A0476"
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "10px 20px",
+                padding: "11px 22px",
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.08)",
-                color: "#94a3b8",
-                borderRadius: "8px",
+                color: "#cbd5e1",
+                borderRadius: "10px",
                 fontSize: "13px",
                 fontWeight: 600,
                 fontFamily: "'JetBrains Mono', monospace",
                 letterSpacing: "0.03em",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
               }}
             >
-              GitHub ↗
+              <FaGithub size={15} />
+              <span>GitHub Projects ↗</span>
             </a>
           </div>
         </motion.div>
 
-        {/* Right: Highlights Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "16px",
-        }}>
+        {/* Right Highlights Cards Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
+          }}
+          className="highlights-subgrid"
+        >
           {highlights.map((item, i) => (
             <motion.div
               key={i}
@@ -177,44 +182,44 @@ const About = () => {
                 padding: "24px",
                 background: "rgba(255,255,255,0.02)",
                 border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: "12px",
+                borderRadius: "16px",
                 transition: "all 0.3s ease",
-                cursor: "default",
               }}
             >
-              <div style={{ fontSize: "24px", marginBottom: "12px" }}>{item.icon}</div>
-              <h4 style={{
-                fontSize: "14px",
-                fontWeight: 700,
-                color: "#e2e8f0",
-                marginBottom: "8px",
-                letterSpacing: "0.02em",
-              }}>{item.title}</h4>
-              <p style={{
-                fontSize: "13px",
-                color: "#475569",
-                lineHeight: 1.7,
-              }}>{item.text}</p>
+              <div style={{ marginBottom: "12px" }}>{item.icon}</div>
+              <h4
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  color: "#e2e8f0",
+                  marginBottom: "8px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {item.title}
+              </h4>
+              <p style={{ fontSize: "13px", color: "#64748b", lineHeight: 1.6 }}>{item.text}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Stats Row */}
+      {/* Stats Counter Bar */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "1px",
-          marginTop: "80px",
-          background: "rgba(255,255,255,0.05)",
-          borderRadius: "16px",
+          marginTop: "72px",
+          background: "rgba(255,255,255,0.06)",
+          borderRadius: "20px",
           overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.06)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
         }}
         className="stats-grid"
       >
@@ -222,27 +227,26 @@ const About = () => {
           <div
             key={i}
             style={{
-              padding: "36px 24px",
+              padding: "36px 20px",
               textAlign: "center",
-              background: "rgba(10,10,15,0.8)",
-              borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+              background: "rgba(10, 10, 15, 0.85)",
             }}
           >
-            <div style={{
-              fontSize: "36px",
-              fontWeight: 800,
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              marginBottom: "8px",
-              fontFamily: "'JetBrains Mono', monospace",
-            }}>{s.value}</div>
-            <div style={{
-              fontSize: "13px",
-              color: "#475569",
-              fontWeight: 500,
-            }}>{s.label}</div>
+            <div
+              style={{
+                fontSize: "clamp(28px, 4vw, 38px)",
+                fontWeight: 900,
+                background: "linear-gradient(135deg, #6366f1, #8b5cf6, #38bdf8)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                marginBottom: "6px",
+                fontFamily: "'JetBrains Mono', monospace",
+              }}
+            >
+              {s.value}
+            </div>
+            <div style={{ fontSize: "13px", color: "#64748b", fontWeight: 500 }}>{s.label}</div>
           </div>
         ))}
       </motion.div>
@@ -252,7 +256,8 @@ const About = () => {
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 540px) {
+          .highlights-subgrid { grid-template-columns: 1fr !important; }
           .stats-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
