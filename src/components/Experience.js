@@ -83,7 +83,9 @@ const Experience = () => {
         maxWidth: "1100px",
         margin: "0 auto",
         position: "relative",
+        width: "100%",
       }}
+      className="mobile-section-padding"
     >
       {/* Section Header */}
       <motion.div
@@ -91,7 +93,7 @@ const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        style={{ marginBottom: "64px" }}
+        style={{ marginBottom: "48px" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <span
@@ -126,9 +128,9 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      {/* Timeline */}
-      <div style={{ position: "relative" }}>
-        {/* Vertical line */}
+      {/* Timeline Wrapper */}
+      <div style={{ position: "relative", width: "100%" }}>
+        {/* Vertical line (Desktop only) */}
         <div
           style={{
             position: "absolute",
@@ -138,20 +140,20 @@ const Experience = () => {
             width: "2px",
             background: "linear-gradient(to bottom, #6366f1, #8b5cf6, #06b6d4, rgba(255,255,255,0.05))",
           }}
-          className="timeline-line"
+          className="hidden-mobile"
         />
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "40px", paddingLeft: "48px" }} className="timeline-container">
+        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }} className="timeline-container">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              style={{ position: "relative" }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              style={{ position: "relative", width: "100%" }}
             >
-              {/* Timeline Node Dot */}
+              {/* Timeline Node Dot (Desktop only) */}
               <div
                 style={{
                   position: "absolute",
@@ -165,24 +167,25 @@ const Experience = () => {
                   border: "3px solid #0a0a0f",
                   zIndex: 2,
                 }}
-                className="timeline-dot"
+                className="hidden-mobile"
               />
 
               {/* Card Container */}
               <motion.div
                 whileHover={{ borderColor: `${exp.color}50`, boxShadow: `0 10px 30px ${exp.color}15` }}
                 style={{
-                  padding: "32px",
                   background: "rgba(255,255,255,0.02)",
                   border: "1px solid rgba(255,255,255,0.06)",
                   borderRadius: "20px",
                   transition: "all 0.3s ease",
                   position: "relative",
                   overflow: "hidden",
+                  width: "100%",
                 }}
+                className="timeline-card-padding"
               >
                 {/* Accent Top Strip */}
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: exp.color }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: exp.color }} />
 
                 {/* Card Top Row */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "12px", marginBottom: "20px" }}>
@@ -244,6 +247,7 @@ const Experience = () => {
                       color: "#38bdf8",
                       fontWeight: 600,
                       marginBottom: "20px",
+                      maxWidth: "100%",
                     }}
                   >
                     <span>⚡ Key Impact:</span>
@@ -293,7 +297,7 @@ const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        style={{ marginTop: "80px" }}
+        style={{ marginTop: "64px", width: "100%" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "13px", color: "#6366f1", letterSpacing: "0.1em" }}>
@@ -305,7 +309,6 @@ const Experience = () => {
         <motion.div
           whileHover={{ borderColor: "rgba(99,102,241,0.4)", boxShadow: "0 10px 30px rgba(99,102,241,0.1)" }}
           style={{
-            padding: "32px",
             background: "rgba(255,255,255,0.02)",
             border: "1px solid rgba(255,255,255,0.06)",
             borderRadius: "20px",
@@ -315,13 +318,15 @@ const Experience = () => {
             flexWrap: "wrap",
             gap: "20px",
             transition: "all 0.3s ease",
+            width: "100%",
           }}
+          className="timeline-card-padding"
         >
-          <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
             <div
               style={{
-                width: "56px",
-                height: "56px",
+                width: "52px",
+                height: "52px",
                 borderRadius: "14px",
                 background: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2))",
                 border: "1px solid rgba(99,102,241,0.3)",
@@ -332,14 +337,14 @@ const Experience = () => {
                 flexShrink: 0,
               }}
             >
-              <FaGraduationCap size={28} />
+              <FaGraduationCap size={26} />
             </div>
 
             <div>
-              <h4 style={{ fontSize: "18px", fontWeight: 800, color: "#f8fafc", marginBottom: "4px" }}>
+              <h4 style={{ fontSize: "17px", fontWeight: 800, color: "#f8fafc", marginBottom: "4px" }}>
                 B.Tech, Electronics & Communication Engineering
               </h4>
-              <p style={{ fontSize: "15px", color: "#6366f1", fontWeight: 600, marginBottom: "4px" }}>
+              <p style={{ fontSize: "14px", color: "#6366f1", fontWeight: 600, marginBottom: "4px" }}>
                 CMR College of Engineering and Technology
               </p>
               <p style={{ fontSize: "13px", color: "#64748b" }}>Hyderabad, India · Graduated May 2022</p>
@@ -349,7 +354,7 @@ const Experience = () => {
           <div
             style={{
               textAlign: "center",
-              padding: "16px 28px",
+              padding: "14px 24px",
               background: "rgba(99,102,241,0.08)",
               border: "1px solid rgba(99,102,241,0.25)",
               borderRadius: "14px",
@@ -357,7 +362,7 @@ const Experience = () => {
           >
             <div
               style={{
-                fontSize: "26px",
+                fontSize: "24px",
                 fontWeight: 900,
                 fontFamily: "'JetBrains Mono', monospace",
                 background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
@@ -376,11 +381,21 @@ const Experience = () => {
       </motion.div>
 
       <style>{`
-        @media (max-width: 640px) {
-          .timeline-container { padding-left: 28px !important; }
-          .timeline-dot { left: -34px !important; width: 12px !important; height: 12px !important; top: 30px !important; }
-          .timeline-line { left: 5px !important; }
-          .period-mobile-left { textAlign: left !important; }
+        .timeline-container {
+          padding-left: 48px;
+        }
+        .timeline-card-padding {
+          padding: 32px;
+        }
+        @media (min-width: 769px) {
+          .hidden-mobile { display: block !important; }
+        }
+        @media (max-width: 768px) {
+          .hidden-mobile { display: none !important; }
+          .timeline-container { padding-left: 0 !important; }
+          .timeline-card-padding { padding: 20px 16px !important; }
+          .period-mobile-left { text-align: left !important; }
+          .mobile-section-padding { padding: 60px 16px !important; }
         }
       `}</style>
     </section>

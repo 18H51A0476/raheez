@@ -76,7 +76,7 @@ func (c *RoutingController) ReconcileBFDSession(ctx context.Context, cfg BFDConf
       overview:
         "Built a complete cloud infrastructure solution hosting high-concurrency coding assessments and learning platforms. Replaced third-party vendor platforms (HackerEarth) with an in-house AWS architecture.",
       architecture: [
-        "Architected S3-backed caching layers for static static assets & dynamic query outputs, dropping API latency by 80%.",
+        "Architected S3-backed caching layers for static assets & dynamic query outputs, dropping API latency by 80%.",
         "Configured AWS SQS queues with S3 payload pointers for high-throughput event processing and transactional email delivery via SES.",
         "Automated multi-environment IaC deployments with AWS CloudFormation templates integrated into GitHub Actions CI/CD pipelines.",
       ],
@@ -193,7 +193,7 @@ func AnalyzeMemoryTrend(samples []MetricSample, limitBytes int64) (willOOM bool,
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeTab, setActiveTab] = useState("overview"); // 'overview', 'architecture', 'code'
+  const [activeTab, setActiveTab] = useState("overview");
   const [copiedCode, setCopiedCode] = useState(false);
 
   const categories = ["All", "Distributed Systems", "Cloud Platform", "Real-Time Systems", "Reliability & DevOps"];
@@ -210,7 +210,11 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" style={{ padding: "100px 24px", maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
+    <section
+      id="projects"
+      style={{ padding: "100px 24px", maxWidth: "1200px", margin: "0 auto", position: "relative", width: "100%" }}
+      className="mobile-section-padding"
+    >
       {/* Background glow */}
       <div
         style={{
@@ -218,7 +222,8 @@ const Projects = () => {
           top: "30%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "700px",
+          width: "100%",
+          maxWidth: "600px",
           height: "400px",
           background: "radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)",
           pointerEvents: "none",
@@ -232,7 +237,7 @@ const Projects = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        style={{ marginBottom: "48px" }}
+        style={{ marginBottom: "40px" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "13px", color: "#6366f1", letterSpacing: "0.1em" }}>
@@ -254,9 +259,10 @@ const Projects = () => {
           display: "flex",
           gap: "8px",
           overflowX: "auto",
-          paddingBottom: "16px",
-          marginBottom: "40px",
+          paddingBottom: "12px",
+          marginBottom: "36px",
           scrollbarWidth: "none",
+          maxWidth: "100%",
         }}
       >
         {categories.map((cat) => (
@@ -264,7 +270,7 @@ const Projects = () => {
             key={cat}
             onClick={() => setActiveCategory(cat)}
             style={{
-              padding: "10px 20px",
+              padding: "9px 18px",
               borderRadius: "100px",
               fontSize: "13px",
               fontWeight: 600,
@@ -275,7 +281,6 @@ const Projects = () => {
               border: activeCategory === cat ? "1px solid rgba(99,102,241,0.5)" : "1px solid rgba(255,255,255,0.06)",
               background: activeCategory === cat ? "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2))" : "rgba(255,255,255,0.02)",
               color: activeCategory === cat ? "#fff" : "#64748b",
-              boxShadow: activeCategory === cat ? "0 0 20px rgba(99,102,241,0.2)" : "none",
             }}
           >
             {cat}
@@ -288,7 +293,8 @@ const Projects = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "28px",
+          gap: "24px",
+          width: "100%",
         }}
         className="projects-grid"
       >
@@ -299,20 +305,20 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            whileHover={{ y: -6, borderColor: "rgba(99,102,241,0.4)" }}
+            whileHover={{ y: -4, borderColor: "rgba(99,102,241,0.4)" }}
             style={{
               background: "rgba(255,255,255,0.02)",
               border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "20px",
-              padding: "32px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               transition: "all 0.3s ease",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
               position: "relative",
               overflow: "hidden",
+              width: "100%",
             }}
+            className="project-card-padding"
           >
             {/* Top accent line */}
             <div
@@ -321,20 +327,20 @@ const Projects = () => {
                 top: 0,
                 left: 0,
                 right: 0,
-                height: "2px",
+                height: "3px",
                 background: "linear-gradient(90deg, #6366f1, #8b5cf6, transparent)",
               }}
             />
 
             <div>
-              {/* Top Header info */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              {/* Header info */}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px", flexWrap: "wrap", gap: "8px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <div
                     style={{
-                      width: "44px",
-                      height: "44px",
-                      borderRadius: "12px",
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "10px",
                       background: "rgba(99,102,241,0.1)",
                       border: "1px solid rgba(99,102,241,0.2)",
                       display: "flex",
@@ -362,14 +368,14 @@ const Projects = () => {
               </div>
 
               {/* Title & Subtitle */}
-              <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#e2e8f0", marginBottom: "6px", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
+              <h3 style={{ fontSize: "19px", fontWeight: 800, color: "#e2e8f0", marginBottom: "6px", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
                 {project.title}
               </h3>
               <p style={{ fontSize: "13px", color: "#6366f1", fontWeight: 600, fontFamily: "'JetBrains Mono', monospace", marginBottom: "16px" }}>
                 {project.subtitle}
               </p>
 
-              <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.7, marginBottom: "24px" }}>
+              <p style={{ fontSize: "14px", color: "#64748b", lineHeight: 1.7, marginBottom: "20px" }}>
                 {project.description}
               </p>
 
@@ -377,20 +383,22 @@ const Projects = () => {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: `repeat(${project.metrics.length}, 1fr)`,
-                  gap: "8px",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: "6px",
                   background: "rgba(10,10,15,0.6)",
-                  padding: "12px 14px",
+                  padding: "10px 12px",
                   borderRadius: "12px",
                   border: "1px solid rgba(255,255,255,0.04)",
-                  marginBottom: "24px",
+                  marginBottom: "20px",
+                  width: "100%",
                 }}
+                className="metrics-bar-mobile"
               >
                 {project.metrics.map((m, idx) => (
                   <div key={idx} style={{ textAlign: "center" }}>
                     <div
                       style={{
-                        fontSize: "14px",
+                        fontSize: "13px",
                         fontWeight: 800,
                         color: m.highlight ? "#38bdf8" : "#e2e8f0",
                         fontFamily: "'JetBrains Mono', monospace",
@@ -406,7 +414,7 @@ const Projects = () => {
 
             <div>
               {/* Tech Stack */}
-              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "24px" }}>
+              <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "20px" }}>
                 {project.tech.map((t) => (
                   <span
                     key={t}
@@ -426,7 +434,7 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* View Architecture Modal Trigger */}
+              {/* View Specs Trigger Button */}
               <motion.button
                 onClick={() => {
                   setSelectedProject(project);
@@ -436,7 +444,7 @@ const Projects = () => {
                 whileTap={{ scale: 0.98 }}
                 style={{
                   width: "100%",
-                  padding: "12px 20px",
+                  padding: "12px 18px",
                   background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))",
                   border: "1px solid rgba(99,102,241,0.3)",
                   color: "#fff",
@@ -449,7 +457,6 @@ const Projects = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   gap: "8px",
-                  boxShadow: "0 0 15px rgba(99,102,241,0.1)",
                 }}
               >
                 <span>View Specs & Code</span>
@@ -460,7 +467,7 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Project Detail Modal */}
+      {/* Modal View */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -474,12 +481,12 @@ const Projects = () => {
               right: 0,
               bottom: 0,
               zIndex: 999,
-              background: "rgba(5, 5, 10, 0.85)",
+              background: "rgba(5, 5, 10, 0.88)",
               backdropFilter: "blur(12px)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "24px",
+              padding: "16px",
             }}
             onClick={() => setSelectedProject(null)}
           >
@@ -491,14 +498,14 @@ const Projects = () => {
               style={{
                 background: "#0d0e15",
                 border: "1px solid rgba(99,102,241,0.3)",
-                borderRadius: "24px",
-                maxWidth: "800px",
+                borderRadius: "20px",
+                maxWidth: "760px",
                 width: "100%",
-                maxHeight: "90vh",
+                maxHeight: "88vh",
                 overflowY: "auto",
-                padding: "36px",
+                padding: "24px",
                 position: "relative",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(99,102,241,0.15)",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -507,8 +514,8 @@ const Projects = () => {
                 onClick={() => setSelectedProject(null)}
                 style={{
                   position: "absolute",
-                  top: "24px",
-                  right: "24px",
+                  top: "16px",
+                  right: "16px",
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.1)",
                   color: "#94a3b8",
@@ -524,13 +531,12 @@ const Projects = () => {
                 <FaTimes size={16} />
               </button>
 
-              {/* Modal Header */}
-              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px", flexWrap: "wrap" }}>
                 <span
                   style={{
-                    padding: "4px 12px",
+                    padding: "3px 10px",
                     borderRadius: "100px",
-                    fontSize: "12px",
+                    fontSize: "11px",
                     fontWeight: 600,
                     background: "rgba(99,102,241,0.15)",
                     color: "#a5b4fc",
@@ -540,41 +546,43 @@ const Projects = () => {
                 >
                   {selectedProject.badge}
                 </span>
-                <span style={{ fontSize: "13px", color: "#64748b", fontFamily: "'JetBrains Mono', monospace" }}>
+                <span style={{ fontSize: "12px", color: "#64748b", fontFamily: "'JetBrains Mono', monospace" }}>
                   {selectedProject.category}
                 </span>
               </div>
 
-              <h2 style={{ fontSize: "24px", fontWeight: 800, color: "#e2e8f0", marginBottom: "6px" }}>{selectedProject.title}</h2>
-              <p style={{ fontSize: "14px", color: "#6366f1", fontWeight: 600, fontFamily: "'JetBrains Mono', monospace", marginBottom: "24px" }}>
+              <h2 style={{ fontSize: "20px", fontWeight: 800, color: "#e2e8f0", marginBottom: "4px" }}>{selectedProject.title}</h2>
+              <p style={{ fontSize: "13px", color: "#6366f1", fontWeight: 600, fontFamily: "'JetBrains Mono', monospace", marginBottom: "20px" }}>
                 {selectedProject.subtitle}
               </p>
 
-              {/* Tabs navigation inside Modal */}
+              {/* Tabs */}
               <div
                 style={{
                   display: "flex",
-                  gap: "8px",
+                  gap: "6px",
                   borderBottom: "1px solid rgba(255,255,255,0.08)",
-                  paddingBottom: "12px",
-                  marginBottom: "24px",
+                  paddingBottom: "10px",
+                  marginBottom: "20px",
+                  overflowX: "auto",
                 }}
               >
                 {[
                   { id: "overview", label: "Overview & Impact" },
-                  { id: "architecture", label: "Technical Highlights" },
-                  { id: "code", label: "Sample Engine Code" },
+                  { id: "architecture", label: "Highlights" },
+                  { id: "code", label: "Sample Code" },
                 ].map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     style={{
-                      padding: "8px 16px",
+                      padding: "7px 14px",
                       borderRadius: "8px",
-                      fontSize: "13px",
+                      fontSize: "12px",
                       fontWeight: 600,
                       fontFamily: "'JetBrains Mono', monospace",
                       cursor: "pointer",
+                      whiteSpace: "nowrap",
                       background: activeTab === tab.id ? "rgba(99,102,241,0.2)" : "transparent",
                       border: activeTab === tab.id ? "1px solid rgba(99,102,241,0.4)" : "1px solid transparent",
                       color: activeTab === tab.id ? "#fff" : "#64748b",
@@ -588,32 +596,29 @@ const Projects = () => {
               {/* Tab Content */}
               {activeTab === "overview" && (
                 <div>
-                  <h4 style={{ fontSize: "14px", fontWeight: 700, color: "#94a3b8", marginBottom: "8px", fontFamily: "'JetBrains Mono', monospace" }}>
-                    PROBLEM STATEMENT & OVERVIEW
+                  <h4 style={{ fontSize: "13px", fontWeight: 700, color: "#94a3b8", marginBottom: "8px", fontFamily: "'JetBrains Mono', monospace" }}>
+                    OVERVIEW
                   </h4>
-                  <p style={{ fontSize: "15px", color: "#cbd5e1", lineHeight: 1.8, marginBottom: "24px" }}>
+                  <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: 1.7, marginBottom: "20px" }}>
                     {selectedProject.details.overview}
                   </p>
 
-                  <h4 style={{ fontSize: "14px", fontWeight: 700, color: "#94a3b8", marginBottom: "12px", fontFamily: "'JetBrains Mono', monospace" }}>
-                    KEY SYSTEM METRICS
-                  </h4>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "24px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px", marginBottom: "20px" }}>
                     {selectedProject.metrics.map((m, idx) => (
                       <div
                         key={idx}
                         style={{
-                          padding: "16px",
+                          padding: "12px",
                           background: "rgba(255,255,255,0.02)",
                           border: "1px solid rgba(255,255,255,0.06)",
-                          borderRadius: "12px",
+                          borderRadius: "10px",
                           textAlign: "center",
                         }}
                       >
-                        <div style={{ fontSize: "18px", fontWeight: 800, color: m.highlight ? "#38bdf8" : "#818cf8", fontFamily: "'JetBrains Mono', monospace" }}>
+                        <div style={{ fontSize: "15px", fontWeight: 800, color: m.highlight ? "#38bdf8" : "#818cf8", fontFamily: "'JetBrains Mono', monospace" }}>
                           {m.val}
                         </div>
-                        <div style={{ fontSize: "11px", color: "#64748b", marginTop: "4px" }}>{m.label}</div>
+                        <div style={{ fontSize: "10px", color: "#64748b", marginTop: "2px" }}>{m.label}</div>
                       </div>
                     ))}
                   </div>
@@ -622,14 +627,14 @@ const Projects = () => {
 
               {activeTab === "architecture" && (
                 <div>
-                  <h4 style={{ fontSize: "14px", fontWeight: 700, color: "#94a3b8", marginBottom: "16px", fontFamily: "'JetBrains Mono', monospace" }}>
-                    ARCHITECTURE & IMPLEMENTATION BREAKDOWN
+                  <h4 style={{ fontSize: "13px", fontWeight: 700, color: "#94a3b8", marginBottom: "14px", fontFamily: "'JetBrains Mono', monospace" }}>
+                    TECHNICAL IMPLEMENTATION
                   </h4>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
                     {selectedProject.details.architecture.map((item, idx) => (
-                      <li key={idx} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                      <li key={idx} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                         <span style={{ color: "#6366f1", fontWeight: 700, marginTop: "2px" }}>⚡</span>
-                        <span style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: 1.7 }}>{item}</span>
+                        <span style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: 1.6 }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -638,19 +643,19 @@ const Projects = () => {
 
               {activeTab === "code" && (
                 <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                     <span style={{ fontSize: "12px", color: "#64748b", fontFamily: "'JetBrains Mono', monospace" }}>
-                      Production-Grade Code Snippet
+                      Production Code Snippet
                     </span>
                     <button
                       onClick={() => handleCopyCode(selectedProject.details.codeSnippet)}
                       style={{
-                        padding: "6px 12px",
+                        padding: "5px 10px",
                         background: "rgba(99,102,241,0.15)",
                         border: "1px solid rgba(99,102,241,0.3)",
                         color: "#a5b4fc",
                         borderRadius: "6px",
-                        fontSize: "12px",
+                        fontSize: "11px",
                         fontFamily: "'JetBrains Mono', monospace",
                         cursor: "pointer",
                         display: "flex",
@@ -667,13 +672,13 @@ const Projects = () => {
                     style={{
                       background: "#050608",
                       border: "1px solid rgba(255,255,255,0.08)",
-                      padding: "20px",
-                      borderRadius: "12px",
+                      padding: "16px",
+                      borderRadius: "10px",
                       overflowX: "auto",
-                      fontSize: "13px",
+                      fontSize: "12px",
                       color: "#38bdf8",
                       fontFamily: "'JetBrains Mono', monospace",
-                      lineHeight: 1.6,
+                      lineHeight: 1.5,
                     }}
                   >
                     <code>{selectedProject.details.codeSnippet}</code>
@@ -686,8 +691,15 @@ const Projects = () => {
       </AnimatePresence>
 
       <style>{`
+        .project-card-padding {
+          padding: 28px;
+        }
         @media (max-width: 900px) {
           .projects-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 768px) {
+          .mobile-section-padding { padding: 60px 16px !important; }
+          .project-card-padding { padding: 20px 16px !important; }
         }
       `}</style>
     </section>

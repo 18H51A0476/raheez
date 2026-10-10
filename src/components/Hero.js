@@ -33,50 +33,38 @@ const Hero = ({ onToast }) => {
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
-        padding: "130px 24px 80px",
+        padding: "120px 24px 70px",
+        width: "100%",
       }}
+      className="hero-mobile-padding"
     >
-      {/* Background Orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10%",
-          left: "15%",
-          width: "500px",
-          height: "500px",
-          background: "radial-gradient(circle, rgba(99,102,241,0.14) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(50px)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          right: "10%",
-          width: "400px",
-          height: "400px",
-          background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(50px)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: "45%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "700px",
-          height: "700px",
-          background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(70px)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Background Orbs Container */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "10%",
+            width: "400px",
+            height: "400px",
+            background: "radial-gradient(circle, rgba(99,102,241,0.14) 0%, transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(50px)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            right: "10%",
+            width: "350px",
+            height: "350px",
+            background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(50px)",
+          }}
+        />
+      </div>
 
       {/* Floating Tech Icons (Desktop Only) */}
       {floatingTechs.map((tech, i) => (
@@ -136,13 +124,13 @@ const Hero = ({ onToast }) => {
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: "10px",
+            gap: "8px",
             background: "rgba(99,102,241,0.1)",
             border: "1px solid rgba(99,102,241,0.3)",
             borderRadius: "100px",
-            padding: "8px 18px",
-            marginBottom: "28px",
-            boxShadow: "0 0 20px rgba(99,102,241,0.15)",
+            padding: "6px 14px",
+            marginBottom: "24px",
+            maxWidth: "100%",
           }}
         >
           <span
@@ -152,6 +140,7 @@ const Hero = ({ onToast }) => {
               background: "#22c55e",
               borderRadius: "50%",
               boxShadow: "0 0 10px #22c55e",
+              flexShrink: 0,
             }}
             className="pulse-dot"
           />
@@ -160,7 +149,7 @@ const Hero = ({ onToast }) => {
               fontSize: "12px",
               color: "#cbd5e1",
               fontFamily: "'JetBrains Mono', monospace",
-              letterSpacing: "0.04em",
+              letterSpacing: "0.03em",
               fontWeight: 600,
             }}
           >
@@ -174,11 +163,11 @@ const Hero = ({ onToast }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
           style={{
-            fontSize: "clamp(42px, 7.5vw, 84px)",
+            fontSize: "clamp(38px, 7.5vw, 84px)",
             fontWeight: 900,
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
-            marginBottom: "18px",
+            marginBottom: "16px",
             background: "linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -207,9 +196,9 @@ const Hero = ({ onToast }) => {
             fontSize: "clamp(15px, 2.2vw, 20px)",
             color: "#38bdf8",
             fontWeight: 600,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.03em",
             fontFamily: "'JetBrains Mono', monospace",
-            marginBottom: "20px",
+            marginBottom: "18px",
           }}
         >
           Software Engineer II · Distributed Systems & Cloud Infrastructure
@@ -221,10 +210,10 @@ const Hero = ({ onToast }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.6 }}
           style={{
-            fontSize: "clamp(15px, 1.8vw, 18px)",
+            fontSize: "clamp(14px, 1.8vw, 17px)",
             color: "#94a3b8",
             maxWidth: "680px",
-            margin: "0 auto 36px",
+            margin: "0 auto 32px",
             lineHeight: 1.7,
             fontWeight: 400,
           }}
@@ -241,20 +230,20 @@ const Hero = ({ onToast }) => {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "10px",
+            gap: "8px",
             flexWrap: "wrap",
-            marginBottom: "32px",
+            marginBottom: "28px",
           }}
         >
           {["Go (Golang)", "Java", "Kubernetes", "AWS", "BGP/BFD", "gRPC"].map((t) => (
             <span
               key={t}
               style={{
-                padding: "5px 12px",
+                padding: "4px 10px",
                 background: "rgba(99,102,241,0.1)",
                 border: "1px solid rgba(99,102,241,0.25)",
                 borderRadius: "100px",
-                fontSize: "12px",
+                fontSize: "11px",
                 color: "#a5b4fc",
                 fontFamily: "'JetBrains Mono', monospace",
                 fontWeight: 600,
@@ -272,10 +261,10 @@ const Hero = ({ onToast }) => {
           transition={{ delay: 0.55, duration: 0.6 }}
           style={{
             display: "flex",
-            gap: "14px",
+            gap: "12px",
             justifyContent: "center",
             flexWrap: "wrap",
-            marginBottom: "48px",
+            marginBottom: "40px",
           }}
         >
           <motion.a
@@ -283,7 +272,7 @@ const Hero = ({ onToast }) => {
             whileHover={{ scale: 1.03, boxShadow: "0 0 35px rgba(99,102,241,0.5)" }}
             whileTap={{ scale: 0.97 }}
             style={{
-              padding: "14px 32px",
+              padding: "14px 28px",
               background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
               color: "#fff",
               borderRadius: "12px",
@@ -306,7 +295,7 @@ const Hero = ({ onToast }) => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             style={{
-              padding: "14px 28px",
+              padding: "14px 24px",
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.12)",
               color: "#e2e8f0",
@@ -331,12 +320,12 @@ const Hero = ({ onToast }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.6 }}
-          style={{ display: "flex", justifyContent: "center", gap: "16px", alignItems: "center" }}
+          style={{ display: "flex", justifyContent: "center", gap: "14px", alignItems: "center" }}
         >
           {[
-            { icon: <FaGithub size={20} />, href: "https://github.com/18H51A0476", label: "GitHub" },
-            { icon: <FaLinkedin size={20} />, href: "https://linkedin.com/in/raheez", label: "LinkedIn" },
-            { icon: <FaEnvelope size={20} />, href: "mailto:mohammedraheez3@gmail.com", label: "Email" },
+            { icon: <FaGithub size={18} />, href: "https://github.com/18H51A0476", label: "GitHub" },
+            { icon: <FaLinkedin size={18} />, href: "https://linkedin.com/in/raheez", label: "LinkedIn" },
+            { icon: <FaEnvelope size={18} />, href: "mailto:mohammedraheez3@gmail.com", label: "Email" },
           ].map((s) => (
             <motion.a
               key={s.label}
@@ -346,8 +335,8 @@ const Hero = ({ onToast }) => {
               whileHover={{ y: -4, borderColor: "#6366f1", color: "#6366f1" }}
               title={s.label}
               style={{
-                width: "44px",
-                height: "44px",
+                width: "42px",
+                height: "42px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -356,7 +345,6 @@ const Hero = ({ onToast }) => {
                 border: "1px solid rgba(255,255,255,0.08)",
                 color: "#94a3b8",
                 transition: "all 0.25s ease",
-                boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
               }}
             >
               {s.icon}
@@ -364,31 +352,6 @@ const Hero = ({ onToast }) => {
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        style={{
-          position: "absolute",
-          bottom: "28px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "6px",
-          color: "#475569",
-          fontSize: "12px",
-          fontFamily: "'JetBrains Mono', monospace",
-        }}
-      >
-        <span>SCROLL DOWN</span>
-        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ fontSize: "16px" }}>
-          ↓
-        </motion.div>
-      </motion.div>
 
       <style>{`
         .pulse-dot {
@@ -401,6 +364,7 @@ const Hero = ({ onToast }) => {
         @media (max-width: 768px) {
           .hidden-on-mobile { display: none !important; }
           .show-mobile-only { display: flex !important; }
+          .hero-mobile-padding { padding: 100px 16px 50px !important; }
         }
         @media (min-width: 769px) {
           .show-mobile-only { display: none !important; }

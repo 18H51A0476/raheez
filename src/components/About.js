@@ -41,7 +41,9 @@ const About = () => {
         maxWidth: "1200px",
         margin: "0 auto",
         position: "relative",
+        width: "100%",
       }}
+      className="mobile-section-padding"
     >
       {/* Section Header */}
       <motion.div
@@ -49,7 +51,7 @@ const About = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        style={{ marginBottom: "64px" }}
+        style={{ marginBottom: "48px" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <span
@@ -88,8 +90,9 @@ const About = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "56px",
+          gap: "48px",
           alignItems: "start",
+          width: "100%",
         }}
         className="about-grid"
       >
@@ -99,15 +102,16 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          style={{ width: "100%" }}
         >
-          <p style={{ fontSize: "17px", color: "#94a3b8", lineHeight: 1.8, marginBottom: "20px" }}>
+          <p style={{ fontSize: "16px", color: "#cbd5e1", lineHeight: 1.8, marginBottom: "18px" }}>
             I'm a <strong style={{ color: "#f8fafc" }}>Software Engineer II</strong> at{" "}
             <strong style={{ color: "#6366f1" }}>F5 Networks</strong> with 4+ years of hands-on experience designing high-throughput backend services, distributed systems, and multi-cloud networking infrastructure.
           </p>
-          <p style={{ fontSize: "16px", color: "#64748b", lineHeight: 1.8, marginBottom: "20px" }}>
+          <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.8, marginBottom: "18px" }}>
             My work focuses on writing production Go microservices for the control and data planes of F5 Distributed Cloud (XC), managing BGP/BFD routing convergence, FRRouting compliance (FedRAMP), and building automated container diagnostic tools for Kubernetes environments.
           </p>
-          <p style={{ fontSize: "16px", color: "#64748b", lineHeight: 1.8, marginBottom: "32px" }}>
+          <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.8, marginBottom: "28px" }}>
             I hold a B.Tech in Electronics & Communication Engineering from CMR College of Engineering & Technology (CGPA: 8.5/10). I thrive in solving high-stakes distributed systems challenges, performance optimization, and on-call operational excellence.
           </p>
 
@@ -117,7 +121,7 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "11px 22px",
+                padding: "10px 20px",
                 background: "rgba(99,102,241,0.12)",
                 border: "1px solid rgba(99,102,241,0.3)",
                 color: "#a5b4fc",
@@ -140,7 +144,7 @@ const About = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "11px 22px",
+                padding: "10px 20px",
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.08)",
                 color: "#cbd5e1",
@@ -167,6 +171,7 @@ const About = () => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             gap: "16px",
+            width: "100%",
           }}
           className="highlights-subgrid"
         >
@@ -179,20 +184,21 @@ const About = () => {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ y: -4, borderColor: "rgba(99,102,241,0.4)" }}
               style={{
-                padding: "24px",
+                padding: "20px 18px",
                 background: "rgba(255,255,255,0.02)",
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: "16px",
                 transition: "all 0.3s ease",
+                width: "100%",
               }}
             >
-              <div style={{ marginBottom: "12px" }}>{item.icon}</div>
+              <div style={{ marginBottom: "10px" }}>{item.icon}</div>
               <h4
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 700,
                   color: "#e2e8f0",
-                  marginBottom: "8px",
+                  marginBottom: "6px",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -214,12 +220,12 @@ const About = () => {
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "1px",
-          marginTop: "72px",
+          marginTop: "60px",
           background: "rgba(255,255,255,0.06)",
           borderRadius: "20px",
           overflow: "hidden",
           border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+          width: "100%",
         }}
         className="stats-grid"
       >
@@ -227,38 +233,39 @@ const About = () => {
           <div
             key={i}
             style={{
-              padding: "36px 20px",
+              padding: "28px 16px",
               textAlign: "center",
               background: "rgba(10, 10, 15, 0.85)",
             }}
           >
             <div
               style={{
-                fontSize: "clamp(28px, 4vw, 38px)",
+                fontSize: "clamp(24px, 3.5vw, 36px)",
                 fontWeight: 900,
                 background: "linear-gradient(135deg, #6366f1, #8b5cf6, #38bdf8)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginBottom: "6px",
+                marginBottom: "4px",
                 fontFamily: "'JetBrains Mono', monospace",
               }}
             >
               {s.value}
             </div>
-            <div style={{ fontSize: "13px", color: "#64748b", fontWeight: 500 }}>{s.label}</div>
+            <div style={{ fontSize: "12px", color: "#64748b", fontWeight: 500 }}>{s.label}</div>
           </div>
         ))}
       </motion.div>
 
       <style>{`
         @media (max-width: 900px) {
-          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 540px) {
           .highlights-subgrid { grid-template-columns: 1fr !important; }
           .stats-grid { grid-template-columns: 1fr !important; }
+          .mobile-section-padding { padding: 60px 16px !important; }
         }
       `}</style>
     </section>

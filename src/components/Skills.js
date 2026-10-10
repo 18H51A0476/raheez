@@ -109,7 +109,7 @@ const skillGroups = [
 ];
 
 const SkillBar = ({ name, icon, level, tag, color }) => (
-  <div style={{ marginBottom: "16px" }}>
+  <div style={{ marginBottom: "14px" }}>
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
         {icon && <span style={{ fontSize: "15px", color, opacity: 0.9 }}>{icon}</span>}
@@ -191,7 +191,9 @@ const Skills = () => {
         maxWidth: "1200px",
         margin: "0 auto",
         position: "relative",
+        width: "100%",
       }}
+      className="mobile-section-padding"
     >
       {/* Section Header */}
       <motion.div
@@ -199,7 +201,7 @@ const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        style={{ marginBottom: "48px" }}
+        style={{ marginBottom: "40px" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <span
@@ -244,8 +246,9 @@ const Skills = () => {
           gap: "8px",
           overflowX: "auto",
           paddingBottom: "12px",
-          marginBottom: "40px",
+          marginBottom: "36px",
           scrollbarWidth: "none",
+          width: "100%",
         }}
       >
         {filterCategories.map((cat) => (
@@ -277,6 +280,7 @@ const Skills = () => {
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: "24px",
+          width: "100%",
         }}
         className="skills-grid"
       >
@@ -289,15 +293,15 @@ const Skills = () => {
             transition={{ delay: i * 0.08, duration: 0.5 }}
             whileHover={{ borderColor: `${group.color}50` }}
             style={{
-              padding: "28px",
               background: "rgba(255,255,255,0.02)",
               border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "20px",
               transition: "all 0.3s ease",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+              width: "100%",
             }}
+            className="skill-card-padding"
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
               <div
                 style={{
                   width: "36px",
@@ -335,11 +339,16 @@ const Skills = () => {
       </div>
 
       <style>{`
+        .skill-card-padding {
+          padding: 24px;
+        }
         @media (max-width: 1024px) {
           .skills-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 640px) {
           .skills-grid { grid-template-columns: 1fr !important; }
+          .mobile-section-padding { padding: 60px 16px !important; }
+          .skill-card-padding { padding: 20px 16px !important; }
         }
       `}</style>
     </section>
